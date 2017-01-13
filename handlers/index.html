@@ -68,7 +68,7 @@
   
   
   
-  <body class="palette-primary-indigo palette-accent-green">
+  <body class="palette-primary-indigo palette-accent-teal">
     
       
       
@@ -267,6 +267,12 @@
             </li>
           
             <li class="anchor">
+              <a title="ldap.q" href="#ldapq">
+                ldap.q
+              </a>
+            </li>
+          
+            <li class="anchor">
               <a title="Diagnostic Reporting" href="#diagnostic-reporting">
                 Diagnostic Reporting
               </a>
@@ -405,6 +411,13 @@ off by setting .proc.loadhandlers to 0b in the configuration file.</p>
 <td align="center">N</td>
 <td align="center">Restrict client write access to prevent any modification to data in place. Also disables all HTTP access.</td>
 <td align="center">pg, ps, ws, ph, pp</td>
+</tr>
+<tr>
+<td align="center">ldap.q</td>
+<td align="center">.ldap</td>
+<td align="center">N</td>
+<td align="center">Restrict client access to process using ldap authentication.</td>
+<td align="center">pw</td>
 </tr>
 </tbody>
 </table>
@@ -890,6 +903,8 @@ current user as listed on the gateway permission tables:</p>
     {.pm.allowed[.z.u;x[`0]] and x[`1] in `rdb}]
 </code></pre>
 <p><a name="dia"></a></p>
+<h2 id="ldapq">ldap.q</h2>
+<p>Authentication with an ldap server is managed with ldap.q.</p>
 <h2 id="diagnostic-reporting">Diagnostic Reporting</h2>
 <p>The message handler modifications provide a wealth of diagnostic
 information including:</p>
