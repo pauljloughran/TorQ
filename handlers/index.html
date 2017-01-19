@@ -313,6 +313,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ldapq" title="ldap.q" class="md-nav__link">
+    ldap.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diagnostic-reporting" title="Diagnostic Reporting" class="md-nav__link">
     Diagnostic Reporting
   </a>
@@ -449,6 +456,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ldapq" title="ldap.q" class="md-nav__link">
+    ldap.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diagnostic-reporting" title="Diagnostic Reporting" class="md-nav__link">
     Diagnostic Reporting
   </a>
@@ -539,6 +553,13 @@ off by setting .proc.loadhandlers to 0b in the configuration file.</p>
 <td align="center">N</td>
 <td align="center">Restrict client write access to prevent any modification to data in place. Also disables all HTTP access.</td>
 <td align="center">pg, ps, ws, ph, pp</td>
+</tr>
+<tr>
+<td align="center">ldap.q</td>
+<td align="center">.ldap</td>
+<td align="center">N</td>
+<td align="center">Restrict client access to process using ldap authentication.</td>
+<td align="center">pw</td>
 </tr>
 </tbody>
 </table>
@@ -1022,6 +1043,84 @@ extended to restrict access to queries with the
 current user as listed on the gateway permission tables:</p>
 <pre><code>.pm.grantfunction[`.gw.syncexec;`toplevel;
     {.pm.allowed[.z.u;x[`0]] and x[`1] in `rdb}]
+</code></pre>
+<p><a name="ldap"></a></p>
+<h2 id="ldapq">ldap.q</h2>
+<p>Authentication with an ldap server is managed with ldap.q. It allows:</p>
+<ul>
+<li>
+<p>A user to authenticate against an ldap server;</p>
+</li>
+<li>
+<p>Caching of user attempts to allow reauthentication without server if within checktime period;</p>
+</li>
+<li>
+<p>Users to be blocked if too many failed authentication attempts are made.</p>
+</li>
+</ul>
+<p>Default parameters in the ldap namespace are set in {TORQHOME}/config/settings/default.q.</p>
+<table>
+<thead>
+<tr>
+<th align="center">parameter</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">enabled</td>
+<td align="center">Whether ldap authentication is enabled</td>
+</tr>
+<tr>
+<td align="center">debug</td>
+<td align="center">Whether logging message are written to console</td>
+</tr>
+<tr>
+<td align="center">server</td>
+<td align="center">Host for ldap server.</td>
+</tr>
+<tr>
+<td align="center">port</td>
+<td align="center">Port number for ldap server.</td>
+</tr>
+<tr>
+<td align="center">version</td>
+<td align="center">Ldap version number.</td>
+</tr>
+<tr>
+<td align="center">blocktime</td>
+<td align="center">Time that must elapse before a blocked user can attempt to authenticate. If set to 0Np then the user is permanently blocked until an admin unblocks them.</td>
+</tr>
+<tr>
+<td align="center">checklimit</td>
+<td align="center">Login attempts before user is blocked.</td>
+</tr>
+<tr>
+<td align="center">checktime</td>
+<td align="center">Period of time that allows user to reauthenticate without confirming with ldap server.</td>
+</tr>
+<tr>
+<td align="center">buildDNsuf</td>
+<td align="center">Suffix for building distinguished name.</td>
+</tr>
+<tr>
+<td align="center">buildDN</td>
+<td align="center">Function to build distiniguished name.</td>
+</tr>
+</tbody>
+</table>
+<p>To get started the following will need altered from their default values: enabled, port, server, buildDNsuf.</p>
+<p>The value buildDNsuf is required to build a users bind_dn from the supplied username and is called by the function buildDN. An example definition is:</p>
+<pre><code>.ldap.buildDNsuf:"ou=users,dc=website,dc=com";
+</code></pre>
+<p>Authentication is handled by .ldap.authenticate which is wrapped by .ldap.login, which is in turn wrapped by .z.pw when ldap authentication is enabled. When invoked .ldap.login retrieves the users latest authentication attempt from the cache, if it exists, and performs several checks before authenticating the user.</p>
+<p>To authenticate the function first checks whether the user has been blocked by reaching the checklimit and blocktime has not passed, immediately returning false if this is the case. If the user has previously successfully authenticated within the period defined by checktime and is using the same credentials authentication will be permitted. For all other cases an authentication attempt will be made against the ldap server. </p>
+<p>Example authentication attempt:</p>
+<pre><code>.ldap.login[`user;pass]
+0b
+</code></pre>
+<p>To manually unblock a user the function .ldap.unblock must be passed their userame as a symbol. The function checks the cache to see whether a user is blocked and will reset the blocked status if necessary. An example usage of this function is:</p>
+<pre><code>.ldap.unblock[`user]
 </code></pre>
 <p><a name="dia"></a></p>
 <h2 id="diagnostic-reporting">Diagnostic Reporting</h2>

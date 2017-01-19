@@ -355,6 +355,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tickerplant" title="Tickerplant" class="md-nav__link">
+    Tickerplant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#real-time-database-rdb" title="Real Time Database (RDB)" class="md-nav__link">
     Real Time Database (RDB)
   </a>
@@ -609,6 +616,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tickerplant" title="Tickerplant" class="md-nav__link">
+    Tickerplant
+  </a>
   
 </li>
       
@@ -1202,6 +1216,24 @@ public class Main {
 </code></pre>
 <p>Some of the unofficially supported APIs may only allow synchronous calls
 to be made.</p>
+<p><a name="tickerplant"></a></p>
+<h2 id="tickerplant">Tickerplant</h2>
+<p>The tickerplant is a modified version of the standard kdb+tick tickerplant.
+The modifications from the standard tick.q include:</p>
+<ul>
+<li>
+<p>Applies timestamps as timestamp rather than timespan;</p>
+</li>
+<li>
+<p>Tracks per table record counts in .u.icounts dictionary for faster recovery
+    of real time subscribers;</p>
+</li>
+<li>
+<p>Allows configuration of timezones for timestamping data and performing
+    end of day rollover (see <a href="../utilities/#eodtimeq">eodtime.q</a>);</p>
+</li>
+</ul>
+<p>The tickerplant log file will be written to hdb/database.</p>
 <p><a name="rdb"></a></p>
 <h2 id="real-time-database-rdb">Real Time Database (RDB)</h2>
 <p>The Real Time Database is a modified version of r.q found in kdb+tick.
@@ -1260,7 +1292,10 @@ number of modifications and enhancements over w.q:</p>
      sort has completed;</p>
 </li>
 <li>
-<p>More log information supplied.</p>
+<p>More log information supplied;</p>
+</li>
+<li>
+<p>End of day timezone can be configured (see <a href="../utilities/#eodtimeq">eodtime.q</a>).</p>
 </li>
 </ol>
 <p>The WDB process can broken down into two main functions:</p>
