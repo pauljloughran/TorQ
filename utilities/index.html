@@ -240,6 +240,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#apidetailsq" title="apidetails.q" class="md-nav__link">
+    apidetails.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#timerq" title="timer.q" class="md-nav__link">
     timer.q
   </a>
@@ -332,6 +339,20 @@
         <li class="md-nav__item">
   <a href="#heartbeatq" title="heartbeat.q" class="md-nav__link">
     heartbeat.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rmvrq" title="rmvr.q" class="md-nav__link">
+    rmvr.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osq" title="os.q" class="md-nav__link">
+    os.q
   </a>
   
 </li>
@@ -463,6 +484,17 @@
   </li>
 
     
+      
+      
+  <li class="md-nav__item">
+    
+      <a href="../blog/" title="TorQ Blog Posts" class="md-nav__link">
+        TorQ Blog Posts
+      </a>
+    
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -486,6 +518,13 @@
         <li class="md-nav__item">
   <a href="#apiq" title="api.q" class="md-nav__link">
     api.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apidetailsq" title="apidetails.q" class="md-nav__link">
+    apidetails.q
   </a>
   
 </li>
@@ -583,6 +622,20 @@
         <li class="md-nav__item">
   <a href="#heartbeatq" title="heartbeat.q" class="md-nav__link">
     heartbeat.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rmvrq" title="rmvr.q" class="md-nav__link">
+    rmvr.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osq" title="os.q" class="md-nav__link">
+    os.q
   </a>
   
 </li>
@@ -764,6 +817,8 @@ q)f[`a]
 q)).api.whereami[.z.s]                                                                                                                                                                                                                                                        
 `..g
 </code></pre>
+<h2 id="apidetailsq">apidetails.q</h2>
+<p>This file in both the common and the handler directories is used to add to the api using the functions defined in api.q</p>
 <p><a name="tim"></a></p>
 <h2 id="timerq">timer.q</h2>
 <p>kdb+ provides a single timer function, .z.ts which is triggered with the
@@ -1404,6 +1459,11 @@ allowing downstream processes to detect the availability of upstream
 components. The heartbeat table contains a heartbeat time and counter.
 The heartbeat script contains functions to handle and process heartbeats
 and manage upstream process failures. See .api.p.hb.*for details.</p>
+<h2 id="rmvrq">rmvr.q</h2>
+<p>This file contains a function which can be used to convert environment variable paths into a full path from the root directory.</p>
+<h2 id="osq">os.q</h2>
+<p>A file with various q functions to perform system operations. This will detect your operating system and will perform the correct commands depending on what you are using.</p>
+<p>This is a modification of a script developed by Simon Garland.</p>
 <p><a name="wu"></a></p>
 <h2 id="dbwriteutilsq">dbwriteutils.q</h2>
 <p>This contains a set of utility functions for writing data to historic
@@ -1660,25 +1720,6 @@ namespaces is below- run .api.u namespace*to list the functions.</p>
 </tr>
 </tbody>
 </table>
-<!--
-
-Updating the API Table
----------------------------
-
-For a start you will need to load up the api table. Launch TorQ and connect to any process then call the function .api.p[`]. This will produce a table with the full API. Next you need to define the follwing function. 
-
-    convertAPI:{
-     x: select name,vartype,namespace,descrip,params,return from x where not namespace = `.`.q`;
-     header:"|",("|" sv string cols x),"|\n";
-     break: raze {x;"|-"} each til count cols x;
-     break:break,"|\n";
-     c:(raze/)(header; break;{"|",("|" sv {raze x} each string value x[y]),"|\n"}[x;] each til count x);
-     c:ssr[c;"`";"\\`"];a:"\n" vs c; `:markdown.md 0:.h.tx[`md;a]}
-
-When called on the API table this will convert it into a markdown readable format and then save it to a file called markdown.md. This file should be good to go. Simply replace the API Table in docs/utilities.md with this table, update the site with mkdocs gh-deploy and your changes should be registered.
-
---->
-
 <h2 id="api-table">API Table</h2>
 <table>
 <thead>
