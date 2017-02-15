@@ -501,6 +501,11 @@ $KDBCONFIG/passwords. A default password can be used, which is
 overridden by one for the process type, which is itself overridden by
 one for the process name. For greater security, the
 .servers.loadpassword function should be modified.</p>
+<p>Some non-torq processes require a username and password to allow connection. 
+These will be stored in a passwords dictionary. 
+Passing the host and port of a process into this dictionary will return the full connection string 
+if it is present within the dictionary. 
+If however it is not present in the dictionary then the default username and password will be returned.</p>
 <h2 id="retrieving-and-using-handles">Retrieving and Using Handles</h2>
 <p>A function .servers.getservers is supplied to return a table of handle
 information. .servers.getservers takes five parameters:</p>
