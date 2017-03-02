@@ -413,6 +413,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#subscribercutoffq" title="subscribercutoff.q" class="md-nav__link">
+    subscribercutoff.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#modified-uq" title="Modified u.q" class="md-nav__link">
     Modified u.q
   </a>
@@ -691,6 +698,13 @@
         <li class="md-nav__item">
   <a href="#eodtimeq" title="eodtime.q" class="md-nav__link">
     eodtime.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribercutoffq" title="subscribercutoff.q" class="md-nav__link">
+    subscribercutoff.q
   </a>
   
 </li>
@@ -1342,13 +1356,7 @@ dictionary should/can have the following fields:</p>
 <td align="center">partitiontype</td>
 <td align="center">N</td>
 <td align="center">symbol</td>
-<td align="center">Partitioning to use. Must be one of</td>
-</tr>
-<tr>
-<td align="center">`date`month`year`int. Default is `date</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">Partitioning to use. Must be one of `date`month`year`int. Default is `date</td>
 </tr>
 <tr>
 <td align="center">partitioncol</td>
@@ -1602,6 +1610,19 @@ occurs at 5PM New York time would be:</p>
 "yesterday", meaning that at the rolltime, the trading date will become the day <em>after</em>
 the calendar date. Where this is positive, the rollover occurs "today" and so the trading
 date will become the current calendar date.</p>
+<h2 id="subscribercutoffq">subscribercutoff.q</h2>
+<p>This script is used to provide functionality for cutting off any slow subscribers on any
+TorQ processes. The script will periodically check (time between checks set in .subcut.checkfreq.
+Default is 1 minute) the byte size of the queue for all the handles on the process to see if
+they have exceeded a set cut-off point (set in the variable .subcut.maxsize) and will only
+cut-off the handle if it exceeds this limit a set number of times in a row (default is 3
+and set in the .subcut.breachlimit variable). This gives clients a chance to tidy up their
+behavior and will avoid cutting off clients if they happened to have a spike just before the
+check was performed. The .subcut.state variable is used to keep track of the handles and the 
+number of times they have exceeded the size limit in a row. </p>
+<p>To enable this functionality the .subcut.enabled flag must be set to true and 
+the timer.q script must be loaded on the desired processes. By default the chained 
+tickerplant is the only processes with the functionality enabled. </p>
 <h2 id="modified-uq">Modified u.q</h2>
 <p>Starting in kdb+ v3.4, the new broadcast feature has some performance
 benefits. It works by serialising a message once before sending it
