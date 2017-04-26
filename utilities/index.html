@@ -323,6 +323,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kafkaq" title="kafka.q" class="md-nav__link">
+    kafka.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tplogutilsq" title="tplogutils.q" class="md-nav__link">
     tplogutils.q
   </a>
@@ -622,6 +629,13 @@
         <li class="md-nav__item">
   <a href="#pubsubq" title="pubsub.q" class="md-nav__link">
     pubsub.q
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kafkaq" title="kafka.q" class="md-nav__link">
+    kafka.q
   </a>
   
 </li>
@@ -1454,6 +1468,49 @@ u.[k|q] is placed in the common code directory and loaded before
 pubsub.q (make sure u.[k|q] is listed before pubsub.q in order.txt)
 then publish and subscribe will be implemented. You can also build out
 this file to add your own publish and subscribe routines as required.</p>
+<p><a name="kafka"></a></p>
+<h2 id="kafkaq">kafka.q</h2>
+<p>kafka.q provides q language bindings for Apache Kafka, a 'distributed streaming
+platform', a real time messaging system with persistent storage in message logs.</p>
+<p>The core functionality of Kafka – pub/sub messaging with persisted logs, will be
+familiar to most readers as the functionality offered by the kdb+ tick
+tickerplant. The tickerplant log allows the real time database and other
+consumers to replay a day’s events to recover state. An application architecture
+built around Kafka could dispense with a tickerplant component, and have RDBs
+and other real time clients query Kafka on startup for offsets, and play back
+the data they need. While not suitable for very low latency access to streaming
+data, it would carry some advantages for very high throughput applications,
+particularly those in the cloud:</p>
+<ul>
+<li>Kafka’s distributed nature should allow it to scale more transparently than
+splitting tickerplants by instrument universe or message type</li>
+<li>Replaying from offsets is the same interface as live pub/sub and doesn’t require
+filesystem access to the tickerplant log, so RDB’s and other consumer could be
+on a different server</li>
+</ul>
+<p>By default, the Kafka bindings will be loaded into all TorQ processes running on
+l64 systems (the only platform currently supported). An example of usage is
+shown here (this assumes a local running instance of kafka - instructions for
+this are available on the <a href="https://github.com/AquaQAnalytics/kafkaq">kafkaq</a> github 
+repo):</p>
+<pre><code>q).kafka.initconsumer[`localhost:9092;()]
+q).kafka.initproducer[`localhost:9092;()]
+q)kupd / print default definition for incoming data - ignore key, print message
+as ascii
+{[k;x] -1 `char$x;}
+q).kafka.subscribe[`test;0] / subscribe to topic test, partition 0
+q)pub:{.kafka.publish[`test;0;`;`byte$x]} / define pub to publish text input to topic
+test on partition 0 with no key defined
+q)pub&quot;hello world&quot;
+q)hello world
+
+</code></pre>
+
+<p>Limitations of the current implementation:</p>
+<ul>
+<li>Only l64 supported</li>
+<li>Single consumer thread subscribed to one topic at a time</li>
+</ul>
 <p><a name="tp"></a></p>
 <h2 id="tplogutilsq">tplogutils.q</h2>
 <p>tplogutils.q contains functions for recovering tickerplant log files.
