@@ -505,6 +505,17 @@
       
   <li class="md-nav__item">
     
+      <a href="../analyticslib/" title="Analytics Library" class="md-nav__link">
+        Analytics Library
+      </a>
+    
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item">
+    
       <a href="../visualisation/" title="Visualisation" class="md-nav__link">
         Visualisation
       </a>
@@ -1430,11 +1441,17 @@ dictionary should/can have the following fields:</p>
 <td align="center">boolean</td>
 <td align="center">Whether to run garbage collection at appropriate points. Default is 0b (false)</td>
 </tr>
+<tr>
+<td align="center">filepattern</td>
+<td align="center">N</td>
+<td align="center">char[list]</td>
+<td align="center">Pattern used to only load certain files e.g. "<em>.csv",("</em>.csv","*.txt")</td>
+</tr>
 </tbody>
 </table>
 <p>Example usage:</p>
 <pre><code>.loader.loadallfiles[`headers`types`separator`tablename`dbdir!(`sym`time`price`volume;"SP  FI";",";`trade;`:hdb); `:TDC/toload]
-.loader.loadallfiles[`headers`types`separator`tablename`dbdir`dataprocessfunc`chunksize`partitiontype`partitioncol`compression`gc!(`sym`time`price`volume;"SP  FI";enlist",";`tradesummary;`:hdb;{[p;t] select sum size, max price by date:time.date from t};`int$500*2 xexp 20;`month;`date;16 1 0;1b); `:TDC/toload]
+.loader.loadallfiles[`headers`types`separator`tablename`dbdir`dataprocessfunc`chunksize`partitiontype`partitioncol`compression`gc`filepattern!(`sym`time`price`volume;"SP  FI";enlist",";`tradesummary;`:hdb;{[p;t] select sum size, max price by date:time.date from t};`int$500*2 xexp 20;`month;`date;16 1 0;1b;("*.csv";"*.txt")); `:TDC/toload]
 </code></pre>
 <p><a name="sub"></a></p>
 <h2 id="subscriptionsq">subscriptions.q</h2>
