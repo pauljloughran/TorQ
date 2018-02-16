@@ -734,18 +734,16 @@
 <p>These error traps and messages are to guide the user in the correct use of the utilities and are designed to be as informative as possible.</p>
 <h2 id="ffill">ffill</h2>
 <h3 id="usage">Usage</h3>
-<p>This script contains the utility to dynamically forward fill a given table keyed by given columns.
-Input parameters:
-- Dictionary containing:
-    - table - Table to be forward filled
-    - by    - list of column names to key the table (optional)
-    - keycols - list of columns names to be forward filled (optional)</p>
+<p>This script contains the utility to dynamically forward fill a given table keyed by given columns.</p>
+<p>Input is a dictionary containing:
+<em>   table: Table to be forward filled
+</em>   by: List of column names to key the table (optional)
+*   keycols: List of columns names to be forward filled (optional)</p>
 <p>OR </p>
 <ul>
 <li>Table</li>
 </ul>
-<p>This utility is equivalent to:
-- <code>update fills col1, fills col2 ... by col2 from table</code></p>
+<p>This utility is equivalent to:  <code>update fills col1, fills col2 ... by col2 from table</code></p>
 <p>If you have a large data set or just a table with multiple columns typing this statement out can be quite laborious.
 With this utility you simply specify the table or parameter dictionary and pass it to the function.
 This utility also has the added functionality of being able to forward fill mixed list columns, i.e. strings.</p>
@@ -866,14 +864,15 @@ time         sym  ask bid asize bsize a id
 <p>This is a modified version of code available on <a href="http://code.kx.com/q/cookbook/pivoting-tables/#a-very-general-pivot-function-and-an-example">code.kx</a></p>
 <h3 id="usage_1">Usage</h3>
 <p>This script contains the utility to pivot a table, specifying the keyed columns, the columns you wish to pivot around and the values you wish to expose. Note that this method always produces the last value for the grouping. To circumvent this you can do your own aggregation on the table before using the pivot function. For example you can create a column to calculate the sum: <code>update totsum:sum price by sym,src from table</code> and then pivot the data.</p>
-<p>This utility takes a dictionary as input with the following parameters:
-- Dictionary containing:
-    - table - the table you want to pivot
-    - by    - the keyed columns
-    - piv   - the pivot columns
-    - var   - the variables you want to see
-    - f - the function to create your column names (optional)
-    - g     - the function to sort your column names (optional)</p>
+<p>This utility takes a dictionary as input with the following parameters:</p>
+<ul>
+<li>table: The table you want to pivot</li>
+<li>by:  The keyed columns</li>
+<li>piv:     The pivot columns</li>
+<li>var:     The variables you want to see</li>
+<li>f:   The function to create your column names (optional)</li>
+<li>g:   The function to sort your column names (optional)</li>
+</ul>
 <p>The optional function f is a function of var and piv which creates column names for your
 pivoted table.
 The optional function g is a function of the keyed columns, piv and the return of f, which
@@ -972,27 +971,28 @@ AUDUSD UBS | 3         0         744      217
 <p>The intervals.q utility in the .al namespace is used to output a
 list of equally spaced intervals between given start and end points.</p>
 <h3 id="usage_2">Usage</h3>
-<p>Input parameters:
-- Dictionary containing:
-    - start - starting integer number
-    - end - ending integer number
-    - interval - interval spacing between values
-    - round (optional) - toggle rounding to nearest specified interval</p>
+<p>Input is a dictionary containing:
+<em>   start: Starting integer number
+</em>   end: Ending integer number
+<em>   interval: Interval spacing between values
+</em>   round: Toggle rounding to nearest specified interval (optional)</p>
 <p>Parameters should be passed in the form of a dictionary, where start
 and end must be of the same type and interval can be either a long int
 or of the same type as start and end (i.e if start:09:00 and end:12:00,
 and intervals of 5 minutes were required interval could equal 00:05 or 5)</p>
-<p>Allowed data types are:
-- date 
-- month 
-- time 
-- minute 
-- second 
-- timestamp 
-- timespan 
-- integer 
-- short 
-- long</p>
+<p>Allowed data types are:</p>
+<ul>
+<li>date </li>
+<li>month </li>
+<li>time </li>
+<li>minute </li>
+<li>second </li>
+<li>timestamp </li>
+<li>timespan </li>
+<li>integer </li>
+<li>short </li>
+<li>long</li>
+</ul>
 <h3 id="example">Example</h3>
 <p>Using minute datatype:</p>
 <pre><code>q)params:`start`end`interval`round!(09:32;12:00;00:30;0b)
@@ -1043,19 +1043,15 @@ q).al.intervals[params]
 <p>The rack utility gives the user the ability to create a rack table
 (the cross product of distinct values at the input).</p>
 <h3 id="usage_3">Usage</h3>
-<ul>
-<li>Dictionary containing:<ul>
-<li>table     - keyed or unkeyed in-memory table</li>
-<li>keycols   - the columns of the table you want to create the rack from.</li>
-<li>base (optional)   - this is an additional table, against which the rack can be created</li>
-<li>timeseries.start (optional)   - start time to create a timeseries rack</li>
-<li>timeseries.end (optional)     - end time to create a time series rack</li>
-<li>timeseries.interval (optional)    - the interval for the time racking</li>
-<li>timeseries.round (optional)       - should rounding be carried out when creating the timeseries</li>
-<li>fullexpansion (optional, default is 0b) - determines whether the required columns of input table will be expanded themselves or not.</li>
-</ul>
-</li>
-</ul>
+<p>Input is be a dictionary containing:
+<em>   table: Keyed or unkeyed in memory table
+</em>   keycols:  The columns of the table you want to create the rack from.
+<em>   base: This is an additional table, against which the rack can be created (optional)
+</em>   timeseries.start: Start time to create a timeseries rack (optional)
+<em>   timeseries.end: End time to create a time series rack (optional)
+</em>   timeseries.interval: The interval for the time racking (optional)
+<em>   timeseries.round: Should rounding be carried out when creating the timeseries (optional)
+</em>   fullexpansion: Determines whether the required columns of input table will be expanded themselves or not. (optional, default is 0b)</p>
 <p>A timeseries is optional but if it is required then start, end, and interval must be specified as a dictionary called 'timeseries' (round remains optional with a default value of 1b).
 Keyed tables can be provided, these will be unkeyed by the function and crossed as standard unkeyed tables.</p>
 <p>Full expansion in this case refers to the level to which the data is crossed with itself and the user-defined intervals. For example were full expansion disabled then the table would be crossed with the user defined intervals and then crossed with the base. If full expansion is enabled then all of the table columns are crossed with each other before being crossed with the intervals and then the base. Allowing for a more in depth and detailed representation of the data.</p>
