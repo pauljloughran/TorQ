@@ -229,6 +229,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-torqsh" title="Using torq.sh" class="md-nav__link">
+    Using torq.sh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment-variables" title="Environment Variables" class="md-nav__link">
     Environment Variables
   </a>
@@ -238,6 +245,13 @@
         <li class="md-nav__item">
   <a href="#process-identification" title="Process Identification" class="md-nav__link">
     Process Identification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-processes-using-torqsh" title="Running processes using torq.sh" class="md-nav__link">
+    Running processes using torq.sh
   </a>
   
 </li>
@@ -409,6 +423,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-torqsh" title="Using torq.sh" class="md-nav__link">
+    Using torq.sh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment-variables" title="Environment Variables" class="md-nav__link">
     Environment Variables
   </a>
@@ -418,6 +439,13 @@
         <li class="md-nav__item">
   <a href="#process-identification" title="Process Identification" class="md-nav__link">
     Process Identification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-processes-using-torqsh" title="Running processes using torq.sh" class="md-nav__link">
+    Running processes using torq.sh
   </a>
   
 </li>
@@ -629,6 +657,13 @@ will take priority over any other predefined value (.e.g. in a
 configuration or wrapper). Variable names should be supplied with full
 qualification e.g. -.servers.HOPENTIMEOUT 5000.</p>
 <p><a name="env"></a></p>
+<h2 id="using-torqsh">Using torq.sh</h2>
+<p>torq.sh is a script that runs processes in torq with added functionality,
+one key enhancement is all the process configuration is now in one place.
+The default process file is located in $KDBCONFIG/process.csv. This 
+script is only available on Linux. It requires environment variables to 
+be set, similar to torq.q. A usage statement for the script can be seen 
+by running the following in a unix environment: <code>./torq.sh</code>.</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <p>Five environment variables are required:</p>
 <table>
@@ -712,10 +747,10 @@ proctype and procname based on this port number and the corresponding
 hostname entry.</p>
 <p>The process file has format as below.</p>
 <pre><code>aquaq$ cat config/process.csv 
-host,port,proctype,procname
-aquaq,9997,rdb,rdb_europe_1
-aquaq,9998,hdb,hdb_europe_1
-aquaq,9999,hdb,hdb_europa_2
+host,port,proctype,procname,U,localtime,g,T,w,load,startwithall,extras,qcmd
+aquaq,9997,rdb,rdb_europe_1,appconfig/passwords/accesslist.txt,1,1,3,,${KDBCODE}/processes/rdb.q,1,,q
+aquaq,9998,hdb,hdb_europe_1,appconfig/passwords/accesslist.txt,1,1,60,4000,${KDBHDB},1,,q
+aquaq,9999,hdb,hdb_europe_2,appconfig/passwords/accesslist.txt,1,1,60,4000,${KDBHDB},1,,q
 </code></pre>
 <p>The process will read the file and try to identify itself based on the
 host and port it is started on. The host can either be the value
@@ -724,6 +759,111 @@ not automatically identify itself it will exit, unless proctype and
 procname were both passed in as command line parameters. If both of
 these parameters are passed in then default configuration settings will
 be used.</p>
+<p>The parameters following procname set the following:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U</td>
+<td>Authentication requiring a usr:pwd file</td>
+</tr>
+<tr>
+<td>localtime</td>
+<td>Sets process running in local time rather than GMT</td>
+</tr>
+<tr>
+<td>g</td>
+<td>Garbage collection immediate (1) or deferred (0)</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Timeout in seconds for client queries, 0 for no timeout</td>
+</tr>
+<tr>
+<td>w</td>
+<td>Workspace MB limit</td>
+</tr>
+<tr>
+<td>load</td>
+<td>Files or database directory to load</td>
+</tr>
+<tr>
+<td>startwithall</td>
+<td>Determine if process is started when all is specified</td>
+</tr>
+<tr>
+<td>extras</td>
+<td>Specify any additional parameters</td>
+</tr>
+<tr>
+<td>qcmd</td>
+<td>Allows different versions of q to be used or different command line options - rlwap, numactl</td>
+</tr>
+</tbody>
+</table>
+<p>Where U/g/T/w are standard q command line arguments and localtime and 
+load are TorQ command line parameters. </p>
+<h2 id="running-processes-using-torqsh">Running processes using torq.sh</h2>
+<p>torq.sh is able to start or stop processes seperately, in a batch or 
+all at once. Before a process is started/stopped the script will 
+check that the process is not already running before attempting to 
+start/stop a process, a time of when this is executed is printed to screen.</p>
+<pre><code>$ ./torq.sh start rdb1 hdb1 tickerplant1
+    15:42:00 | Starting rdb1...
+    15:42:00 | hdb1 already running
+    15:42:00 | Starting tickerplant1...
+
+$ ./torq.sh stop all
+    15:46:19 | Shutting down hdb1...
+    15:46:19 | Shutting down hdb2...
+</code></pre>
+
+<p>A status summary table of all the processes can be printed to screen, 
+the summary provides information on the time the process was checked, 
+process name, status and the port number and PID of that process.</p>
+<pre><code>$ ./torq.sh summary
+    TIME     | PROCESS        | STATUS | PORT   | PID
+    11:33:59 | discovery1     | up     | 41001  | 14426
+    11:33:59 | tickerplant1   | down   |
+</code></pre>
+
+<p>It is possible to view the underlying start code for all processes. 
+This is useful if another available command line parameter was required 
+for start up. </p>
+<pre><code>$ ./torq.sh start discovery1 -print
+    Start line for discovery1:
+    nohup q deploy/torq.q -procname discovery1 -stackid 41000 -proctype discovery -U appconfig/passwords/accesslist.txt -localtime 1 -g 0 -load deploy/code/processes/discovery.q -procfile deploy/appconfig/process.csv &lt;/dev/null &gt; deploy/logs/torqdiscovery1.txt 2&gt;&amp;1 &amp;
+</code></pre>
+
+<p>The debug command line parameter can be appended to the start line 
+straight from torq.sh to start a process in debug mode. Note it is only 
+possible to start one process at a time in debug mode.</p>
+<pre><code>$ ./torq.sh tickerplant1 -debug
+</code></pre>
+
+<p>If a process name not present in the process.csv is used, the input 
+process name will return as an invalid input. To see a list of all the 
+processes in the process.csv see below.</p>
+<pre><code>$ ./torq.sh procs
+</code></pre>
+
+<p>A different process file can be used with this script from the command 
+line. The argument following the csv flag needs to be a full path to 
+the process.csv.</p>
+<pre><code>$ ./torq.sh start all -csv ${KDBAPPCONFIG}/process.csv
+</code></pre>
+
+<p>To add/override the default values in the g, T, w, or extras column the 
+extras flag can be used in this script. </p>
+<pre><code>$ ./torq.sh start rdb1 -extras -T 60 -w 4000
+$ ./torq.sh start sort1 -extras -s -3
+</code></pre>
+
 <p><a name="logging"></a></p>
 <h2 id="logging">Logging</h2>
 <p>By default, each process will redirect output to a standard out log and

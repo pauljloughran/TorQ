@@ -735,10 +735,12 @@
 <h2 id="ffill">ffill</h2>
 <h3 id="usage">Usage</h3>
 <p>This script contains the utility to dynamically forward fill a given table keyed by given columns.</p>
-<p>Input is a dictionary containing:
-<em>   table: Table to be forward filled
-</em>   by: List of column names to key the table (optional)
-*   keycols: List of columns names to be forward filled (optional)</p>
+<p>Input is a dictionary containing:</p>
+<ul>
+<li>table: Table to be forward filled</li>
+<li>by: List of column names to key the table (optional)</li>
+<li>keycols: List of columns names to be forward filled (optional)</li>
+</ul>
 <p>OR </p>
 <ul>
 <li>Table</li>
@@ -971,11 +973,13 @@ AUDUSD UBS | 3         0         744      217
 <p>The intervals.q utility in the .al namespace is used to output a
 list of equally spaced intervals between given start and end points.</p>
 <h3 id="usage_2">Usage</h3>
-<p>Input is a dictionary containing:
-<em>   start: Starting integer number
-</em>   end: Ending integer number
-<em>   interval: Interval spacing between values
-</em>   round: Toggle rounding to nearest specified interval (optional)</p>
+<p>Input is a dictionary containing:</p>
+<ul>
+<li>start: Starting integer number</li>
+<li>end: Ending integer number</li>
+<li>interval: Interval spacing between values</li>
+<li>round: Toggle rounding to nearest specified interval (optional)</li>
+</ul>
 <p>Parameters should be passed in the form of a dictionary, where start
 and end must be of the same type and interval can be either a long int
 or of the same type as start and end (i.e if start:09:00 and end:12:00,
@@ -1043,15 +1047,17 @@ q).al.intervals[params]
 <p>The rack utility gives the user the ability to create a rack table
 (the cross product of distinct values at the input).</p>
 <h3 id="usage_3">Usage</h3>
-<p>Input is be a dictionary containing:
-<em>   table: Keyed or unkeyed in memory table
-</em>   keycols:  The columns of the table you want to create the rack from.
-<em>   base: This is an additional table, against which the rack can be created (optional)
-</em>   timeseries.start: Start time to create a timeseries rack (optional)
-<em>   timeseries.end: End time to create a time series rack (optional)
-</em>   timeseries.interval: The interval for the time racking (optional)
-<em>   timeseries.round: Should rounding be carried out when creating the timeseries (optional)
-</em>   fullexpansion: Determines whether the required columns of input table will be expanded themselves or not. (optional, default is 0b)</p>
+<p>Input is be a dictionary containing:</p>
+<ul>
+<li>table: Keyed or unkeyed in memory table</li>
+<li>keycols:  The columns of the table you want to create the rack from.</li>
+<li>base: This is an additional table, against which the rack can be created (optional)</li>
+<li>timeseries.start: Start time to create a timeseries rack (optional)</li>
+<li>timeseries.end: End time to create a time series rack (optional)</li>
+<li>timeseries.interval: The interval for the time racking (optional)</li>
+<li>timeseries.round: Should rounding be carried out when creating the timeseries (optional)</li>
+<li>fullexpansion: Determines whether the required columns of input table will be expanded themselves or not. (optional, default is 0b)</li>
+</ul>
 <p>A timeseries is optional but if it is required then start, end, and interval must be specified as a dictionary called 'timeseries' (round remains optional with a default value of 1b).
 Keyed tables can be provided, these will be unkeyed by the function and crossed as standard unkeyed tables.</p>
 <p>Full expansion in this case refers to the level to which the data is crossed with itself and the user-defined intervals. For example were full expansion disabled then the table would be crossed with the user defined intervals and then crossed with the base. If full expansion is enabled then all of the table columns are crossed with each other before being crossed with the intervals and then the base. Allowing for a more in depth and detailed representation of the data.</p>
