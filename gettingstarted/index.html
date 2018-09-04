@@ -377,6 +377,17 @@
       
   <li class="md-nav__item">
     
+      <a href="../monit/" title="Monitoring" class="md-nav__link">
+        Monitoring
+      </a>
+    
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item">
+    
       <a href="../visualisation/" title="Visualisation" class="md-nav__link">
         Visualisation
       </a>
@@ -575,6 +586,9 @@ parameters. An example is below.</p>
 <pre><code>$ . setenv.sh
 $ q torq.q -debug -proctype testproc -procname test1
 </code></pre>
+<p>To specify the parent process type, do:</p>
+<pre><code>$ q torq.q -debug -parentproctype testparentproc -proctype testproc -procname test1
+</code></pre>
 <p>To load a file, do:</p>
 <pre><code>$ q torq.q -load myfile.q -debug -proctype testproc -procname test1
 </code></pre>
@@ -596,6 +610,10 @@ be overridden from the loading script.</p>
 <tr>
 <td>-procname x -proctype y</td>
 <td>The process name and process type</td>
+</tr>
+<tr>
+<td>-parentproctype x</td>
+<td>The parent process type</td>
 </tr>
 <tr>
 <td>-procfile x</td>
@@ -702,18 +720,23 @@ can be extended by setting .proc.envvars before loading torq.q.</p>
 <p><a name="procid"></a></p>
 <h2 id="process-identification">Process Identification</h2>
 <p>At the crux of AquaQ TorQ is how processes identify themselves. This is
-defined by two variables - .proc.proctype and .proc.procname which are
-the type and name of the process respectively. These two values
-determine the code base and configuration loaded, and how they are
-connected to by other processes. If both of these are not defined, the
-TorQ will attempt to use the port number a process was started on to
-determine the code base and configuration loaded.</p>
+defined by two required variables - .proc.proctype and .proc.procname
+which are the type and name of the process respectively. An optional
+variable parentproctype allows an inital codebase and configuration to
+be loaded. The two required  values determine the code base and
+configuration loaded, and how they are connected to by other processes.
+If both of the required variables are not defined, TorQ will attempt
+to use the port number a process was started on to determine the code
+base and configuration loaded.</p>
 <p>The most important of these is the proctype. It is up to the user to
 define at what level to specify a process type. For example, in a
 production environment it would be valid to specify processes of type
 “hdb” (historic database) and “rdb” (real time database). It would also
 be valid to segregate a little more granularly based on approximate
-functionality, for example “hdbEMEA” and “hdbAmericas”. The actual
+functionality, for example “hdbEMEA” and “hdbAmericas”. In this example
+it may be sensible to set the parentproctype as "hdb" and putting all
+shared code in the "hdb" configuration to be loaded first with the
+region-specific configuration being loaded after. The actual
 functionality of a process can be defined more specifically, but this
 will be discussed later. The procname value is used solely for
 identification purposes. A process can determine its type and name in a
@@ -835,7 +858,7 @@ process name, status and the port number and PID of that process.</p>
 <p>It is possible to view the underlying start code for all processes. 
 This is useful if another available command line parameter was required 
 for start up. </p>
-<pre><code>$ ./torq.sh start discovery1 -print
+<pre><code>$ ./torq.sh print discovery1 
     Start line for discovery1:
     nohup q deploy/torq.q -procname discovery1 -stackid 41000 -proctype discovery -U appconfig/passwords/accesslist.txt -localtime 1 -g 0 -load deploy/code/processes/discovery.q -procfile deploy/appconfig/process.csv &lt;/dev/null &gt; deploy/logs/torqdiscovery1.txt 2&gt;&amp;1 &amp;
 </code></pre>
@@ -843,7 +866,7 @@ for start up. </p>
 <p>The debug command line parameter can be appended to the start line 
 straight from torq.sh to start a process in debug mode. Note it is only 
 possible to start one process at a time in debug mode.</p>
-<pre><code>$ ./torq.sh tickerplant1 -debug
+<pre><code>$ ./torq.sh debug tickerplant1 
 </code></pre>
 
 <p>If a process name not present in the process.csv is used, the input 
@@ -920,10 +943,14 @@ files in the below order:-</p>
 <li>
 <p>default.q: default configuration loaded by all processes. In a
     standard installation this should contain the superset of
-    customisable configuration, including comments;</p>
+    customisable configuration, including comments.</p>
 </li>
 <li>
-<p>[proctype].q: configuration for a specific process type;</p>
+<p>[parentproctype].q: configuration for a specific parent process
+    type (only if parentproctype specified).</p>
+</li>
+<li>
+<p>[proctype].q: configuration for a specific process type.</p>
 </li>
 <li>
 <p>[procname].q: configuration for a specific named process.</p>
@@ -943,6 +970,10 @@ configuration in the following order:-</p>
 <li>
 <p>default.q: Application default configuration loaded by all
     processes.</p>
+</li>
+<li>
+<p>[[parentproctype]]{}.q : Application specific configuration for a
+    specific parent process type (only if parentproctype specified).</p>
 </li>
 <li>
 <p>[[proctype]]{}.q: Application specific configuration for a
@@ -997,6 +1028,10 @@ order:</p>
 <p>$KDBCODE/common: shared codebase loaded by all processes;</p>
 </li>
 <li>
+<p>$KDBCODE/[parentproctype]: code for a specific parent process type
+    (only if parentproctype specified);</p>
+</li>
+<li>
 <p>$KDBCODE/[proctype]: code for a specific process type;</p>
 </li>
 <li>
@@ -1017,6 +1052,14 @@ visible to TorQ by setting the $KDBAPPCODE environment variable.</p>
 </li>
 <li>
 <p>$KDBAPPCODE/common: application specific code shared by all processes;</p>
+</li>
+<li>
+<p>$KDBCODE/[parentproctype]: code for a specific parent process type (only if
+    parentproctype specified);</p>
+</li>
+<li>
+<p>$KDBAPPCODE/[parentproctype]: application specific code for a specific parent
+    process type (only if parentproctype specified);</p>
 </li>
 <li>
 <p>$KDBCODE/[proctype]: code for a specific process type;</p>
@@ -1094,7 +1137,7 @@ error but will not exit. Both -stop and -trap are useful for debugging.</p>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy 2016 AquaQ Analytics Limited.  Kx &reg and kdb+ are registered trademarks of Kx Systems Inc.
+            Copyright &copy 2018 AquaQ Analytics Limited.  Kx &reg and kdb+ are registered trademarks of Kx Systems Inc.
           </div>
         
         powered by

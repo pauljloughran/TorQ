@@ -329,6 +329,17 @@
       
   <li class="md-nav__item">
     
+      <a href="../monit/" title="Monitoring" class="md-nav__link">
+        Monitoring
+      </a>
+    
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item">
+    
       <a href="../visualisation/" title="Visualisation" class="md-nav__link">
         Visualisation
       </a>
@@ -457,12 +468,13 @@ default behaviour, but it can all be overridden. The features of AquaQ
 TorQ are:</p>
 <ul>
 <li>
-<p>Process Management: Each process is given a type and name. By
-    default these are used to determine the code base it loads, the
-    configuration loaded, log file naming and how it reports itself to
-    discovery services. Whenever possible we have tried to ensure that
-    all default behaviour can be overridden at the process type level,
-    and further at the process name level.</p>
+<p>Process Management: Each process is given a type and name, and can
+    optionally be given a parent type. By default these are used to
+    determine the code base it loads, the configuration loaded, log 
+    file naming and how it reports itself to discovery services.
+    Whenever possible we have tried to ensure that all default
+    behaviour can be overridden at the process type level, and further
+    at the process name level.</p>
 </li>
 <li>
 <p>Code Management: Processes can optionally load common or process
@@ -472,9 +484,9 @@ TorQ are:</p>
 <p>Configuration Management: Configuration scripts can be loaded as
     standard and with specific process type/name configuration
     overriding default values. Configuration scripts are loaded in a
-    specific order; default, then process type specific, then process
-    name specific. Values loaded last will override values loaded
-    previously.</p>
+    specific order; default, then parent process type specific
+    (optional), process type specific, then process name specific.
+    Values loaded last will override values loaded previously.</p>
 </li>
 <li>
 <p>Usage Logging: All process usage is logged to a single text log file
@@ -491,7 +503,8 @@ TorQ are:</p>
     through query counts and total data size counts. Connections are
     stored and retrieved and can be set to automatically be re-opened as
     required. The password used for outgoing connections can be
-    overridden at default, process type and process name level.</p>
+    overridden at default, parent process type (optional), process type
+    and process name level.</p>
 </li>
 <li>
 <p>Access Controls: Basic access controls are provided, and could be
@@ -897,7 +910,7 @@ versions or operating systems.</p>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy 2016 AquaQ Analytics Limited.  Kx &reg and kdb+ are registered trademarks of Kx Systems Inc.
+            Copyright &copy 2018 AquaQ Analytics Limited.  Kx &reg and kdb+ are registered trademarks of Kx Systems Inc.
           </div>
         
         powered by
