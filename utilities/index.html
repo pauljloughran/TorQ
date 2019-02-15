@@ -470,8 +470,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#requirments" title="Requirments" class="md-nav__link">
-    Requirments
+  <a href="#requirements" title="Requirements" class="md-nav__link">
+    Requirements
   </a>
   
 </li>
@@ -844,8 +844,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#requirments" title="Requirments" class="md-nav__link">
-    Requirments
+  <a href="#requirements" title="Requirements" class="md-nav__link">
+    Requirements
   </a>
   
 </li>
@@ -1291,7 +1291,7 @@ the connection to the mail server (this will be done automatically after
 the initial connection). In some circumstances it may be better to batch
 emails together to send, or to offload email sending to separate
 processes as communication with the SMTP server can take a little time.</p>
-<p>Two further functions are available, .email.connectdefault and
+<p>Two additional functions are available, .email.connectdefault and
 .email.senddefault. These are as above but will use the default
 configuration defined within the configuration files as the relevant
 parameters passed to the methods. In addition, .email.senddefault will
@@ -1317,6 +1317,14 @@ debug should be set to 2i (verbose) to extract the full information.</p>
 q).email.test `$"test@aquaq.co.uk"
 ...
 </code></pre>
+<p>A further function .email.sendviaservice can be used to send an email using the default mail server on a separate specified process and can be used to allow latency sensitive processes to offload this piece of functionality. </p>
+<p>The function takes two parameters a process and a dictionary which should follow  the same format as .email.send. The function uses the .async.postback Utility to send the email by calling .email.servicesend on the specified process. The postback function immediately returns a success boolean indicating that the the async request has been sent and when the function has been run on the server the results are posted back to the client function  email.servicecallback which logs the email status.</p>
+<pre><code>q).email.sendviaservice[`emailservice;`to`subject`body!(`$&quot;test@aquaq.co.uk&quot;;&quot;test email&quot;;(&quot;hi&quot;;&quot;this is an email from torq&quot;))]
+1b
+q)2019.01.04D12:02:57.641940000|gateway|gateway1|INF|email|Email sent successfully
+
+</code></pre>
+
 <p>Additionally functions are available within the email library. See
 .api.p.email.*for more details.</p>
 <h3 id="emails-with-ssl-certificates-from-windows">Emails with SSL certificates from Windows</h3>
@@ -2979,7 +2987,7 @@ Paypal, Ebay, Intel and Booking.com.  However, there is no in-built support for
 direct analysis of data from kdb+. Thus, using the 
 <a href="https://github.com/grafana/simple-json-datasource">SimpleJSON data source</a>,
 we have engineered an adaptor to allow visualisation of kdb+ data.</p>
-<h3 id="requirments">Requirments</h3>
+<h3 id="requirements">Requirements</h3>
 <p>Grafana v5.2.2+
 (Tested on Kdb v3.5+)</p>
 <h3 id="getting-started">Getting Started</h3>
@@ -3028,14 +3036,18 @@ are ready to go!</p>
 into TorQ sessions. From this point onwards you can proceed to use Grafana as 
 it is intended, with the only difference coming in the form of the queries. Use 
 cases and further examples of the queries can be seen in our blogpost:
-<a href="https://www.aquaq.co.uk/q/ask-shall-receive-grafana-kdb-adaptor/">The Grafana-KDB Adaptor</a>. 
+<a href="https://www.aquaq.co.uk/q/ask-shall-receive-grafana-kdb-adaptor/">The Grafana-KDB Adaptor</a>.
+For information and examples of how to execute server side functions in queries, please
+read our followup blogpost on the subject: <a href="https://www.aquaq.co.uk/kdb/grafana-kdb-adaptor-update/">Grafana kdb+ Adaptor Update</a>. 
 Here you can see examples of graphs, tables, heatmaps and single statistics. 
 The best explanation of the inputs allowed in the query section can be seen pictorially here:</p>
-<p><img alt="InputFormat" src="https://github.com/AquaQAnalytics/TorQ/blob/GrafanaTorQ/docs/graphics/GrafanDropDown.png?raw=true" /></p>
+<p><img alt="GrafanaQueries" src="https://github.com/AquaQAnalytics/TorQ/blob/master/docs/graphics/grafana_chart.png?raw=true" /></p>
 <p>Upon opening the query box, in the metrics tab, the user will be provided with 
-a populated drop down of all possible options. Due to the limitations of the 
-JSON messages, it is not possible for our adaptor to distinguish between panels. 
-Consequently, every possible option is returned for each panel, the user can 
+a populated drop down of all possible options. Server functions are not included
+in the dropdown, but can be called by entering the letter f followed by the value
+of <code>.grafana.del</code> (see below) before their function call. Due to the limitations
+of the JSON messages, it is not possible for our adaptor to distinguish between panels. 
+Consequently, every possible option is returned for each panel, the user can
 reduce these choices by simply entering the first letter of their panel type, 
 g for graph, t for table and o for other (heatmap or single stat). From here, 
 you can follow the above diagram to specify your type of query.</p>
