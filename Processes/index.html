@@ -460,6 +460,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#checkmonitor" title="Checkmonitor" class="md-nav__link">
+    Checkmonitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#html5-front-end" title="HTML5 front end" class="md-nav__link">
     HTML5 front end
   </a>
@@ -756,6 +763,13 @@
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checkmonitor" title="Checkmonitor" class="md-nav__link">
+    Checkmonitor
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#html5-front-end" title="HTML5 front end" class="md-nav__link">
@@ -1974,6 +1988,172 @@ time                          sym  host  loglevel id      message
 2014.01.07D12:25:17.457535000 hdb1 aquaq ERR      reload  "failed to reload database"           
 2014.01.07D13:29:28.784333000 rdb1 aquaq ERR      eodsave "failed to save tables : trade, quote"
 </code></pre>
+<h3 id="checkmonitor">Checkmonitor</h3>
+<p>The <code>checkmonitor.q</code> script extends the functionality of the monitor process.<br />
+The script takes a set of user defined configuration settings for a set of process 
+specific checks. These can initially be provided in the form of a CSV, 
+a sample of which is shown here:</p>
+<pre><code>family|metric|process|query|resultchecker|params|period|runtime
+datacount|tradecount|rdb1|{count trade}|checkcount|`varname`count`cond!(`trade;10;`morethan)|0D00:01|0D00:00:01
+</code></pre>
+<p>Upon start up, the CSV file is loaded and inserted into the in-memory table, 
+<code>checkconfig</code>. During this insertion, each check will also be assigned 
+a unique checkid number. </p>
+<pre><code>q)checkconfig
+checkid| family    metric     process query           resultchecker params                                    period               runtime              active
+-------| -----------------------------------------------------------------------------------------------------------------------------------------------------
+1      | datacount tradecount rdb1    "{count trade}" "checkcount"  `varname`count`cond!(`trade;10;`morethan) 0D00:01:00.000000000 0D00:00:01.000000000 1
+</code></pre>
+<p>For each check, the query will be sent via asynchronous requests to the 
+specified processes and waits for postback of the results. Once the monitoring 
+process receives the result of the query, it will then be checked by the resultchecker 
+function to identify whether it will pass or fail. </p>
+<p>Result checker functions must only take two parameters: p- a parameter dictionary, 
+and r- the result row. The status in r will be modified based on whether the
+r result value passes the conditions specified by the resultchecker function. </p>
+<pre><code>q)checkcount
+{[p;r]
+if[`morethan=p`cond;
+  if[p[`count]&lt;r`result; :`status`result!(1h;"")];
+   :`status`result!(0h;"variable ",(string p`varname)," has count of ",(string r`result)," but requires ",string p`count)];
+if[`lessthan=p`cond;
+  if[p[`count]&gt;r`result; :`status`result!(1h;"")];
+  :`status`result!(0h;"variable ",(string p`varname)," has count of ",(string r`result)," but should be less than ",string p`count)];
+}
+
+
+q)p
+varname| `trade
+count  | 10
+cond   | `morethan
+
+q)r
+status| 1h
+result| ""
+</code></pre>
+<p>This example checks whether the trade table within the rdb is larger than 10.
+As this is true, the status has been set to 1h and no error message
+has been returned. This information is inserted into the <code>checkstatus</code> table, 
+which is the master table where all results are stored. </p>
+<pre><code>q)checkstatus
+checkid| family    metric     process lastrun                       nextrun                       status executiontime        totaltime            timerstatus running result
+-------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1      | datacount tradecount rdb1    2019.02.18D10:58:45.908919000 2019.02.18D10:59:45.911635000 1      0D00:00:00.000017000 0D00:00:00.002677000 1           0       ""
+</code></pre>
+<p>In addition to tracking the status of the specified queries, a number of metrics 
+are also returned in the <code>checkstatus</code> table. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Column Header</th>
+<th align="center">Value Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">lastrun</td>
+<td align="center">Timestamp</td>
+<td align="center">Last time check was run</td>
+</tr>
+<tr>
+<td align="center">nextrun</td>
+<td align="center">Timestamp</td>
+<td align="center">Next time check is scheduled to run</td>
+</tr>
+<tr>
+<td align="center">status</td>
+<td align="center">Boolean</td>
+<td align="center">Indicates whether query result has passed resultchecker function</td>
+</tr>
+<tr>
+<td align="center">executiontime</td>
+<td align="center">Timespan</td>
+<td align="center">Time taken for last query to be executed</td>
+</tr>
+<tr>
+<td align="center">totaltime</td>
+<td align="center">Timespan</td>
+<td align="center">Total time taken for check to be run, including sending times and execution</td>
+</tr>
+<tr>
+<td align="center">timerstatus</td>
+<td align="center">Boolean</td>
+<td align="center">Indicates whether last totaltime was executed under threshold value</td>
+</tr>
+<tr>
+<td align="center">running</td>
+<td align="center">Boolean</td>
+<td align="center">Indicates whether check is currently running</td>
+</tr>
+<tr>
+<td align="center">results</td>
+<td align="center">String</td>
+<td align="center">Will display any errors or additional information regarding running checks</td>
+</tr>
+</tbody>
+</table>
+<p>The function checkruntime uses the running column to identify functions
+ that are running extremely slow, and set their status and timerstatus to 0h. </p>
+<p>When the process is exited, the .z.exit has been modified to save the
+checkconfig table as a flat binary file. This will then be preferentially
+loaded next time the process is started up again. The process of saving down
+the in-memory functions makes altering configuration parameters easier. 
+Four functions are available to do so: <code>addcheck</code>, <code>updateconfig</code>, <code>updateconfigfammet</code>
+and <code>forceconfig</code>. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Function Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>addcheck[dictionary]</code></td>
+<td align="center">addcheck allows a new check to be added, and accepts a dictionary as its argument. The keys must be a match to the current checkconfig table, and the values must be of the correct type.</td>
+</tr>
+<tr>
+<td align="center"><code>updateconfig[checkid;paramkey;newval]</code></td>
+<td align="center">updateconfig changes the parameter key of an existing check, using the checkid to specify which check to alter. The type of the new parameter value must match the current value type.</td>
+</tr>
+<tr>
+<td align="center"><code>forceconfig[checkid;newconfig]</code></td>
+<td align="center">forceconfig changes the parameter keys of an existing check and will not check for types.</td>
+</tr>
+<tr>
+<td align="center"><code>updateconfigfammet[family;metric;paramkey;newval]</code></td>
+<td align="center">updateconfig changes the parameter key of an existing check, using the family and metric combination to specify which check to alter. If this combination does not exist, the function will return an error. The type of the new parameter value must match the current value type.</td>
+</tr>
+</tbody>
+</table>
+<p>There are other additional functions that are useful for using the check monitor. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Function Name</th>
+<th align="center">Value Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>currentstatus</code></td>
+<td align="center">Will return only status, timerstatus, result and running from the checktracker table. It accepts a list of checkids, or will return all checks if passed a null.</td>
+</tr>
+<tr>
+<td align="center"><code>timecheck</code></td>
+<td align="center">Will check the median time for current checks to be run against a user-defined timespan. It returns a table displaying the median time and a boolean value.</td>
+</tr>
+<tr>
+<td align="center"><code>statusbyfam</code></td>
+<td align="center">Function will return a table of all checks from specified families, ordered firstly by status, and then by timestatus. If a null is provided, ordered checks from all families will be returned.</td>
+</tr>
+</tbody>
+</table>
+<p>All checks can be tracked using the table <code>checktracker</code>. Here, each run is assigned a 
+unique runid- thus individual runs for each check can be tracked. For each run,
+it tracks the time tkane for target process to recieve the query, as well as 
+the execution time. The result value will also be displayed.</p>
 <h3 id="html5-front-end">HTML5 front end</h3>
 <p>A HTML5 front end has been built to display important process
 information that is sent from the monitor process. It uses HTML5,
