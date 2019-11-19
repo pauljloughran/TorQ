@@ -6,9 +6,9 @@ else
   dirpath="$(cd "$(dirname "$0")" && pwd)"
 fi
 
-export TORQHOME=$dirpath                                                                            # if running the kdb+tick example, change these to full paths
-export TORQDATA=$dirpath                                                                            # some of the kdb+tick processes will change directory, and these will no longer be valid
-export TORQAPPHOME=$dirpath
+export TORQHOME=$dirpath3                                                                            # if running the kdb+tick example, change these to full paths
+export TORQDATA=$dirpath3                                                                            # some of the kdb+tick processes will change directory, and these will no longer be valid
+export TORQAPPHOME=$dirpath3
 
 export KDBLOG=${TORQDATA}/logs
 export KDBHTML=${TORQHOME}/html
