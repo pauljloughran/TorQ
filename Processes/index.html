@@ -862,7 +862,7 @@ it finds in its process.csv file. Discovery services do not replicate
 between themselves. A discovery process must have its process type
 listed as discovery.</p>
 <p>To run the discovery service, use a start line such as:</p>
-<pre><code>aquaq $ q torq.q -load code/processes/discovery.q -p 9995
+<pre><code>aquaq $ q torq.q -load code/processes/discovery.q -p 9995 -proctype discovery -procname discovery1
 </code></pre>
 <p>Modify the configuration as required.</p>
 <h3 id="operation">Operation</h3>
@@ -1071,7 +1071,7 @@ a
 .servers.CONNECTIONS parameter, which dictates the process types the
 gateway queries across. Also, we need to explicitly allow sync calls. We
 can do this from the config or from the command line.</p>
-<pre><code>q torq.q -load code/processes/gateway.q -p 8000 -.gw.synccallsallowed 1 -.servers.CONNECTIONS hdb rdb
+<pre><code>q torq.q -load code/processes/gateway.q -p 8000 -.gw.synccallsallowed 1 -.servers.CONNECTIONS hdb rdb -proctype gateway -procname gateway1
 </code></pre>
 <p>Start a client and connect to the gateway. Start with a sync query. The
 HDB query should take 4 seconds and the RDB query should take 2 seconds.
@@ -1477,11 +1477,11 @@ directory, the schema file, and the on-disk database directory to write
 to) or it will fail on startup. These can either be set in the config
 file, or overridden from the command line in the usual way. An example
 start line would be:</p>
-<pre><code>q torq.q -debug -load code/processes/tickerlogreplay.q -p 9990 -.replay.tplogfile ../test/tplogs/marketdata2013.12.17 -.replay.schemafile ../test/marketdata.q -.replay.hdbdir ../test/hdb1
+<pre><code>q torq.q -debug -load code/processes/tickerlogreplay.q -p 9990 -.replay.tplogfile ../test/tplogs/marketdata2013.12.17 -.replay.schemafile ../test/marketdata.q -.replay.hdbdir ../test/hdb1 -proctype tickerlogreplay -procname tplogreplay1
 </code></pre>
 <p>The tickerplant log replay script has extended usage information which
 can be accessed with -.replay.usage.</p>
-<pre><code>q torq.q -debug -load code/processes/tickerlogreplay.q -p 9990 -.replay.usage
+<pre><code>q torq.q -debug -load code/processes/tickerlogreplay.q -p 9990 -.replay.usage -proctype tickerlogreplay -procname tplogreplay1
 </code></pre>
 <p><a name="house"></a></p>
 <h2 id="housekeeping">Housekeeping</h2>
@@ -1747,7 +1747,7 @@ $KDBCONFIG/settings directory. These settings are the string filepath
 of the input csv file, a boolean to output log messages and timestamp
 for flushing the query log table.</p>
 <p>To run the reporter process:</p>
-<pre><code>q torq.q -load code/processes/reporter.q -p 20004
+<pre><code>q torq.q -load code/processes/reporter.q -p 20004 -proctype reporter -procname reporter1
 </code></pre>
 <p>Once the reporter process has been initiated, the reports will be
 scheduled and no further input is required from the user.</p>
@@ -1964,13 +1964,13 @@ as well) and subscribes to both heartbeats and log messages. It
 maintains a keyed table of heartbeats, and a table of all log messages
 received.</p>
 <p>Run it with:</p>
-<pre><code>aquaq $ q torq.q -load code/processes/monitor.q -p 20001
+<pre><code>aquaq $ q torq.q -load code/processes/monitor.q -p 20001 -proctype monitor -procname monitor1
 </code></pre>
 <p>It is probably advisable to run the monitor process with the -trap flag,
 as there may be some start up errors if the processes it is connecting
 to do not have the necessary heartbeating or publish/subscribe code
 loaded.</p>
-<pre><code>aquaq $ q torq.q -load code/processes/monitor.q -p 20001 -trap
+<pre><code>aquaq $ q torq.q -load code/processes/monitor.q -p 20001 -trap -proctype monitor -procname monitor1
 </code></pre>
 <p>The current heartbeat statuses are tracked in .hb.hb, and the log
 messages in logmsg</p>
@@ -2203,7 +2203,7 @@ KDBCONFIG/settings/compression.q which specify</p>
 </li>
 </ul>
 <p>The process is run like other TorQ processes:</p>
-<pre><code>q torq.q -load code/processes/compression.q -p 20005
+<pre><code>q torq.q -load code/processes/compression.q -p 20005 -proctype compression -procname compression1
 </code></pre>
 <p>Modify the settings file or override variables from the command line as
 appropriate.</p>
@@ -2220,15 +2220,15 @@ process can be modified to not use the discovery service and instead use
 the process.csv file via the configuration in the standard way.</p>
 <p>If run without any command line parameters, kill.q will try to kill each
 process it finds with type defined by its .servers.CONNECTIONS variable.</p>
-<pre><code>q torq.q -load code/processes/kill.q -p 20000
+<pre><code>q torq.q -load code/processes/kill.q -p 20000 -proctype kill -procname killtick
 </code></pre>
 <p>.servers.CONNECTIONS can optionally be overridden from the command line
 (as can any other process variable):</p>
-<pre><code>q torq.q -load code/processes/kill.q -p 20000 -.servers.CONNECTIONS rdb tickerplant
+<pre><code>q torq.q -load code/processes/kill.q -p 20000 -.servers.CONNECTIONS rdb tickerplant -proctype kill -procname killtick
 </code></pre>
 <p>The kill process can also be used to kill only specific named processes
 within the process types:</p>
-<pre><code>q torq.q -load code/processes/kill.q -p 20000 -killnames hdb1 hdb2
+<pre><code>q torq.q -load code/processes/kill.q -p 20000 -killnames hdb1 hdb2 -proctype kill -procname killtick
 </code></pre>
 <p><a name="chained"></a></p>
 <h2 id="chained-tickerplant">Chained Tickerplant</h2>
@@ -2256,7 +2256,7 @@ approach when users want to perform their own custom real time analysis.</p>
 </li>
 </ul>
 <p>To launch the chained tickerplant</p>
-<pre><code>q torq.q -load code/processes/chainedtp.q -p 12009
+<pre><code>q torq.q -load code/processes/chainedtp.q -p 12009 -proctype chainedtp -procname chainedtp1
 </code></pre>
 <p>Chained tickerplant settings are found in <code>config/settings/chainedtp.q</code>
 and are under the <code>.ctp</code> namespace.</p>
