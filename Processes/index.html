@@ -1,17 +1,38 @@
 
-<!DOCTYPE html>
-<html class="no-js">
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
       
       
-        <link rel="shortcut icon" href="../graphics/favicon.ico">
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
       
-      <meta name="generator" content="mkdocs+mkdocs-material#1.0.2">
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -19,132 +40,174 @@
       
     
     
-      <script src="../assets/javascripts/modernizr-facb31f4a3.js"></script>
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
-        
-        
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application-1b8b9fdf68.css">
+    
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-02ce7adcc2.palette.css">
-      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-51911331-4", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
-  
-  
-  
-    <body data-md-color-primary="indigo" data-md-color-accent="green">
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <header class="md-header">
+      <a href="#processes" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="TorQ" class=" md-logo  md-header-nav__button">
+        <a href=".." title="TorQ" class="md-header-nav__button md-logo">
           
-            <img src="../graphics/TorQ-logo.png" width="24" height="24">
+            <i class="md-icon"></i>
           
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
+            <span class="md-header-nav__topic">
+              TorQ
+            </span>
+            <span class="md-header-nav__topic">
               
-            
-            Processes
+                Processes
+              
+            </span>
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-<div class="md-search" data-md-component="search">
-  <div class="md-search__overlay"></div>
-  <div class="md-search__inner">
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
-      <label class="md-icon md-search__icon" for="search"></label>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result"></div>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
   </div>
 </div>
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
           <div class="md-header-nav__source">
             
-              
 
 
   
 
-
-  <a href="https://github.com/AquaQAnalytics/TorQ" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
+<a href="https://github.com/AquaQAnalytics/TorQ/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
-            
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
           </div>
-      </div>
+        </div>
+      
     </div>
   </nav>
 </header>
     
     <div class="md-container">
-      <main class="md-main">
+      
+        
+      
+      
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <i class=" md-logo  md-nav__button">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="TorQ" class="md-nav__button md-logo">
       
-        <img src="../graphics/TorQ-logo.png">
+        <i class="md-icon"></i>
       
-    </i>
+    </a>
     TorQ
   </label>
   
@@ -154,100 +217,109 @@
 
   
 
-
-  <a href="https://github.com/AquaQAnalytics/TorQ" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
+<a href="https://github.com/AquaQAnalytics/TorQ/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href=".." title="Home" class="md-nav__link">
-        Home
-      </a>
-    
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../Overview/" title="About" class="md-nav__link">
-        About
-      </a>
-    
+    <a href="../Overview/" title="About" class="md-nav__link">
+      About
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../gettingstarted/" title="Getting Started" class="md-nav__link">
-        Getting Started
-      </a>
-    
+    <a href="../gettingstarted/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../utilities/" title="Utilities" class="md-nav__link">
-        Utilities
-      </a>
-    
+    <a href="../utilities/" title="Utilities" class="md-nav__link">
+      Utilities
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../handlers/" title="Handlers" class="md-nav__link">
-        Handlers
-      </a>
-    
+    <a href="../handlers/" title="Handlers" class="md-nav__link">
+      Handlers
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../conn/" title="Connection Management" class="md-nav__link">
-        Connection Management
-      </a>
-    
+    <a href="../conn/" title="Connection Management" class="md-nav__link">
+      Connection Management
+    </a>
   </li>
 
     
       
       
-  <li class="md-nav__item">
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Processes
       </label>
     
@@ -262,11 +334,11 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#discovery-service" title="Discovery Service" class="md-nav__link">
+  <a href="#discovery-service" class="md-nav__link">
     Discovery Service
   </a>
   
@@ -274,21 +346,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview" title="Overview" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     Overview
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#operation" title="Operation" class="md-nav__link">
+  <a href="#operation" class="md-nav__link">
     Operation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#available-processes" title="Available Processes" class="md-nav__link">
+  <a href="#available-processes" class="md-nav__link">
     Available Processes
   </a>
   
@@ -300,7 +372,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gateway" title="Gateway" class="md-nav__link">
+  <a href="#gateway" class="md-nav__link">
     Gateway
   </a>
   
@@ -308,42 +380,83 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#asynchronous-behaviour" title="Asynchronous Behaviour" class="md-nav__link">
+  <a href="#asynchronous-behaviour" class="md-nav__link">
     Asynchronous Behaviour
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#synchronous-behaviour" title="Synchronous Behaviour" class="md-nav__link">
+  <a href="#synchronous-behaviour" class="md-nav__link">
     Synchronous Behaviour
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-discovery" title="Process Discovery" class="md-nav__link">
+  <a href="#process-discovery" class="md-nav__link">
     Process Discovery
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#error-handling" title="Error Handling" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     Error Handling
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-calls" title="Client Calls" class="md-nav__link">
+  <a href="#client-calls" class="md-nav__link">
     Client Calls
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-kdb-clients" title="Non kdb+ Clients" class="md-nav__link">
+  <a href="#client-call-examples" class="md-nav__link">
+    Client Call Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-rdb-only" class="md-nav__link">
+    Calls to the RDB only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-hdb-only" class="md-nav__link">
+    Calls to the HDB only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-hdb-and-rdb" class="md-nav__link">
+    Calls to the HDB and RDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demonstrating-aggregation-of-data" class="md-nav__link">
+    Demonstrating Aggregation of data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-kdb-clients" class="md-nav__link">
     Non kdb+ Clients
   </a>
   
@@ -355,49 +468,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tickerplant" title="Tickerplant" class="md-nav__link">
+  <a href="#tickerplant" class="md-nav__link">
     Tickerplant
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#real-time-database-rdb" title="Real Time Database (RDB)" class="md-nav__link">
+  <a href="#real-time-database-rdb" class="md-nav__link">
     Real Time Database (RDB)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#write-database-wdb" title="Write Database (WDB)" class="md-nav__link">
+  <a href="#write-database-wdb" class="md-nav__link">
     Write Database (WDB)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tickerplant-log-replay" title="Tickerplant Log Replay" class="md-nav__link">
+  <a href="#tickerplant-log-replay" class="md-nav__link">
     Tickerplant Log Replay
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#housekeeping" title="Housekeeping" class="md-nav__link">
+  <a href="#housekeeping" class="md-nav__link">
     Housekeeping
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-alerter" title="File Alerter" class="md-nav__link">
+  <a href="#file-alerter" class="md-nav__link">
     File Alerter
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reporter" title="Reporter" class="md-nav__link">
+  <a href="#reporter" class="md-nav__link">
     Reporter
   </a>
   
@@ -405,42 +518,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview_1" title="Overview" class="md-nav__link">
+  <a href="#overview_1" class="md-nav__link">
     Overview
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#report-configuration" title="Report Configuration" class="md-nav__link">
+  <a href="#report-configuration" class="md-nav__link">
     Report Configuration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#result-handlers" title="Result Handlers" class="md-nav__link">
+  <a href="#result-handlers" class="md-nav__link">
     Result Handlers
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#report-process-tracking" title="Report Process Tracking" class="md-nav__link">
+  <a href="#report-process-tracking" class="md-nav__link">
     Report Process Tracking
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#subscribing-for-results" title="Subscribing for Results" class="md-nav__link">
+  <a href="#subscribing-for-results" class="md-nav__link">
     Subscribing for Results
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-reports" title="Example reports" class="md-nav__link">
+  <a href="#example-reports" class="md-nav__link">
     Example reports
   </a>
   
@@ -452,7 +565,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitor" title="Monitor" class="md-nav__link">
+  <a href="#monitor" class="md-nav__link">
     Monitor
   </a>
   
@@ -460,14 +573,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#checkmonitor" title="Checkmonitor" class="md-nav__link">
+  <a href="#checkmonitor" class="md-nav__link">
     Checkmonitor
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#html5-front-end" title="HTML5 front end" class="md-nav__link">
+  <a href="#html5-front-end" class="md-nav__link">
     HTML5 front end
   </a>
   
@@ -479,25 +592,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compression" title="Compression" class="md-nav__link">
+  <a href="#compression" class="md-nav__link">
     Compression
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kill" title="Kill" class="md-nav__link">
+  <a href="#kill" class="md-nav__link">
     Kill
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chained-tickerplant" title="Chained Tickerplant" class="md-nav__link">
+  <a href="#chained-tickerplant" class="md-nav__link">
     Chained Tickerplant
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#torq-data-quality-system-architecture" class="md-nav__link">
+    TorQ Data Quality System Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-checker-dqc" class="md-nav__link">
+    Data Quality Checker (DQC)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-engine-dqe" class="md-nav__link">
+    Data Quality Engine (DQE)
+  </a>
+  
+</li>
+      
+      
+      
+      
       
     </ul>
   
@@ -508,45 +646,49 @@
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../analyticslib/" title="Analytics Library" class="md-nav__link">
-        Analytics Library
-      </a>
-    
+    <a href="../analyticslib/" title="Analytics Library" class="md-nav__link">
+      Analytics Library
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../monit/" title="Monitoring" class="md-nav__link">
-        Monitoring
-      </a>
-    
+    <a href="../monit/" title="Monitoring" class="md-nav__link">
+      Monitoring
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../visualisation/" title="Visualisation" class="md-nav__link">
-        Visualisation
-      </a>
-    
+    <a href="../visualisation/" title="Visualisation" class="md-nav__link">
+      Visualisation
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../blog/" title="TorQ Blog Posts" class="md-nav__link">
-        TorQ Blog Posts
-      </a>
-    
+    <a href="../blog/" title="TorQ Blog Posts" class="md-nav__link">
+      TorQ Blog Posts
+    </a>
   </li>
 
     
@@ -567,11 +709,11 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#discovery-service" title="Discovery Service" class="md-nav__link">
+  <a href="#discovery-service" class="md-nav__link">
     Discovery Service
   </a>
   
@@ -579,21 +721,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview" title="Overview" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     Overview
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#operation" title="Operation" class="md-nav__link">
+  <a href="#operation" class="md-nav__link">
     Operation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#available-processes" title="Available Processes" class="md-nav__link">
+  <a href="#available-processes" class="md-nav__link">
     Available Processes
   </a>
   
@@ -605,7 +747,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gateway" title="Gateway" class="md-nav__link">
+  <a href="#gateway" class="md-nav__link">
     Gateway
   </a>
   
@@ -613,42 +755,83 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#asynchronous-behaviour" title="Asynchronous Behaviour" class="md-nav__link">
+  <a href="#asynchronous-behaviour" class="md-nav__link">
     Asynchronous Behaviour
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#synchronous-behaviour" title="Synchronous Behaviour" class="md-nav__link">
+  <a href="#synchronous-behaviour" class="md-nav__link">
     Synchronous Behaviour
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-discovery" title="Process Discovery" class="md-nav__link">
+  <a href="#process-discovery" class="md-nav__link">
     Process Discovery
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#error-handling" title="Error Handling" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     Error Handling
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-calls" title="Client Calls" class="md-nav__link">
+  <a href="#client-calls" class="md-nav__link">
     Client Calls
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-kdb-clients" title="Non kdb+ Clients" class="md-nav__link">
+  <a href="#client-call-examples" class="md-nav__link">
+    Client Call Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-rdb-only" class="md-nav__link">
+    Calls to the RDB only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-hdb-only" class="md-nav__link">
+    Calls to the HDB only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calls-to-the-hdb-and-rdb" class="md-nav__link">
+    Calls to the HDB and RDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demonstrating-aggregation-of-data" class="md-nav__link">
+    Demonstrating Aggregation of data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-kdb-clients" class="md-nav__link">
     Non kdb+ Clients
   </a>
   
@@ -660,49 +843,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tickerplant" title="Tickerplant" class="md-nav__link">
+  <a href="#tickerplant" class="md-nav__link">
     Tickerplant
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#real-time-database-rdb" title="Real Time Database (RDB)" class="md-nav__link">
+  <a href="#real-time-database-rdb" class="md-nav__link">
     Real Time Database (RDB)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#write-database-wdb" title="Write Database (WDB)" class="md-nav__link">
+  <a href="#write-database-wdb" class="md-nav__link">
     Write Database (WDB)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tickerplant-log-replay" title="Tickerplant Log Replay" class="md-nav__link">
+  <a href="#tickerplant-log-replay" class="md-nav__link">
     Tickerplant Log Replay
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#housekeeping" title="Housekeeping" class="md-nav__link">
+  <a href="#housekeeping" class="md-nav__link">
     Housekeeping
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-alerter" title="File Alerter" class="md-nav__link">
+  <a href="#file-alerter" class="md-nav__link">
     File Alerter
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reporter" title="Reporter" class="md-nav__link">
+  <a href="#reporter" class="md-nav__link">
     Reporter
   </a>
   
@@ -710,42 +893,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview_1" title="Overview" class="md-nav__link">
+  <a href="#overview_1" class="md-nav__link">
     Overview
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#report-configuration" title="Report Configuration" class="md-nav__link">
+  <a href="#report-configuration" class="md-nav__link">
     Report Configuration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#result-handlers" title="Result Handlers" class="md-nav__link">
+  <a href="#result-handlers" class="md-nav__link">
     Result Handlers
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#report-process-tracking" title="Report Process Tracking" class="md-nav__link">
+  <a href="#report-process-tracking" class="md-nav__link">
     Report Process Tracking
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#subscribing-for-results" title="Subscribing for Results" class="md-nav__link">
+  <a href="#subscribing-for-results" class="md-nav__link">
     Subscribing for Results
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-reports" title="Example reports" class="md-nav__link">
+  <a href="#example-reports" class="md-nav__link">
     Example reports
   </a>
   
@@ -757,7 +940,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitor" title="Monitor" class="md-nav__link">
+  <a href="#monitor" class="md-nav__link">
     Monitor
   </a>
   
@@ -765,14 +948,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#checkmonitor" title="Checkmonitor" class="md-nav__link">
+  <a href="#checkmonitor" class="md-nav__link">
     Checkmonitor
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#html5-front-end" title="HTML5 front end" class="md-nav__link">
+  <a href="#html5-front-end" class="md-nav__link">
     HTML5 front end
   </a>
   
@@ -784,25 +967,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compression" title="Compression" class="md-nav__link">
+  <a href="#compression" class="md-nav__link">
     Compression
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kill" title="Kill" class="md-nav__link">
+  <a href="#kill" class="md-nav__link">
     Kill
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chained-tickerplant" title="Chained Tickerplant" class="md-nav__link">
+  <a href="#chained-tickerplant" class="md-nav__link">
     Chained Tickerplant
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#torq-data-quality-system-architecture" class="md-nav__link">
+    TorQ Data Quality System Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-checker-dqc" class="md-nav__link">
+    Data Quality Checker (DQC)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-engine-dqe" class="md-nav__link">
+    Data Quality Engine (DQE)
+  </a>
+  
+</li>
+      
+      
+      
+      
       
     </ul>
   
@@ -814,10 +1022,10 @@
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               
-                 <a href="https://github.com/AquaQAnalytics/TorQ/edit/master/docs/Processes.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
-               
               
+                
+                  <a href="https://github.com/AquaQAnalytics/TorQ/edit/master/docs/Processes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
                 
                 <p><a name="Processes"></a></p>
 <h1 id="processes">Processes</h1>
@@ -905,18 +1113,18 @@ gateway1     gateway         :aquaq:5020  10 0    2014.01.22D17:06:32.152836000 
 used for load balancing and/or to join the results of queries across
 heterogeneous servers (e.g. an RDB and HDB). Ideally the gateway should
 only be used with asynchronous calls. Prior to KDB v3.6, synchronous calls
-caused the gateway to block so limits the gateway to serving one query at a 
+caused the gateway to block which limits the gateway to serving one query at a 
 time (although if querying across multiple backend servers the backend
 queries will be run in parallel).
 For v3.6+, deferred synchronous requests to the gateway are supported.
-This allows the gateway to process mulitple synchronous requests at once,
+This allows the gateway to process multiple synchronous requests at once,
 therefore removing the requirement for the gateway to allow only one type
 of request.
-When using asynchronous calls the client can either block and wait for
+When using asynchronous calls, the client can either block and wait for
 the result (deferred synchronous) or post a call back function which the
 gateway will call back to the client with. 
-With both asynchronous and synchronous queries the backend servers to
-execute queries against are selected using process type.
+The backend servers to be queried against with  asynchronous and synchronous 
+queries are selected using process type.
 The gateway API can be seen by querying .api.p“.gw.*” within a gateway
 process.</p>
 <p><img alt="Gateway behaviour" src="../graphics/async.png" /></p>
@@ -962,11 +1170,14 @@ client. If the query is already running on any backend servers then they
 cannot be timed out other than by using the standard -T flag.</p>
 <h3 id="synchronous-behaviour">Synchronous Behaviour</h3>
 <p>Prior to KDB v3.6, when using synchronous queries the gateway could only handle one query at
-a time and cannot timeout queries other than with the standard -T flag.
-For v3.6+, deferred synchronous calls are supported, allowing the gateway to process mulitple
+a time and cannot timeout queries other than with the standard -T flag. The variable
+<code>.gw.synccallsallowed</code> is by default set to 0b prior to KDB v3.6. 
+To send synchronous calls, edit the gateway.q file so that .gw.synccallsallowed 
+is set to true. (The exception being with TorQ-FSP, in which case it is set to 1b by default.)
+For v3.6+, deferred synchronous calls are supported, allowing the gateway to process multiple
 requests at a time.
 All synchronous queries will be immediately dispatched to the back end
-processes. They will be dispatched using an asyhcnronous call, allowing
+processes. They will be dispatched using an asynchronous call, allowing
 them to run in parallel rather than serially. When the results are
 received they are aggregated and returned to the client.</p>
 <h3 id="process-discovery">Process Discovery</h3>
@@ -995,6 +1206,12 @@ Errors will be returned when:</p>
 <p>the client requests a query against a server type which the gateway
     does not currently have any active instances of (this error is
     returned immediately);</p>
+</li>
+<li>
+<p>the client requests a query with the wrong servertype types;</p>
+</li>
+<li>
+<p>the client requests a query with null servers;</p>
 </li>
 <li>
 <p>the query is timed out;</p>
@@ -1043,8 +1260,65 @@ the gateway api. Use .api.p“.gw.*” for more details.</p>
 </tr>
 </tbody>
 </table>
-<p>For the purposes of demonstration, assume that the queries must be run
-across an RDB and HDB process, and the gateway has one RDB and two HDB
+<h3 id="client-call-examples">Client Call Examples</h3>
+<p>Here are some examples for using client calls via a handle to the gateway process.  <br />
+To reiterate, v3.6+ users can use synchronous calls, whilst asynchronous calls are only relevant for users on &lt; v3.6. </p>
+<h4 id="calls-to-the-rdb-only">Calls to the RDB only</h4>
+<p>For synchronous calls</p>
+<pre><code>// To return the avg price per sym for the day so far
+q) h(`.gw.syncexec;&quot;select avp:avg price by sym from trade where time.date=.z.d&quot;;`rdb)
+
+// hloc function in RDB process
+q) h(`.gw.syncexec;`hloc;`rdb)
+{[startdate;enddate;bucket]
+ $[.z.d within (startdate;enddate);
+ select high:max price, low:min price, open:first price,close:last price,totalsize:sum `long$size, vwap:size wavg price
+ by sym, bucket xbar time
+ from trade;
+ ([sym:`symbol$();time:`timestamp$()] high:`float$();low:`float$();open:`float$();close:`float$();totalsize:`long$();vwap:`float$())]}
+
+
+// Using the hloc function - change query for appropriate date
+q) h(`.gw.syncexec;(`hloc;2020.01.08;2020.01.08;10);`rdb)
+
+// Returns following table
+sym  time                         | high   low    open   close  totalsize vwap
+----------------------------------| ----------------------------------------------
+AAPL 2020.01.08D00:00:00.836801000| 103.62 103.62 103.62 103.62 88        103.62
+AAPL 2020.01.08D00:00:01.804684000| 103.64 103.64 103.64 103.64 86        103.64
+AAPL 2020.01.08D00:00:02.405682000| 103.86 103.86 103.86 103.86 90        103.86
+AAPL 2020.01.08D00:00:03.005465000| 104.06 104.06 104.06 104.06 78        104.06
+AAPL 2020.01.08D00:00:03.404383000| 103.9  103.9  103.9  103.9  49        103.9
+..
+</code></pre>
+
+<p>For asynchronous calls</p>
+<pre><code>// To return the sum size per sym for the day so far
+q) neg[h](`.gw.asyncexec;&quot;select sum size by sym from trade&quot;;`rdb);h[]
+</code></pre>
+
+<h4 id="calls-to-the-hdb-only">Calls to the HDB only</h4>
+<p>For synchronous calls</p>
+<pre><code>// For the high, low, open and close prices of the day before
+q) h(`.gw.syncexec;&quot;select h:max price, l:min price, o:first price, c:last price by sym from trade where date=.z.d-1&quot;;`hdb)
+</code></pre>
+
+<p>For asynchronous calls</p>
+<pre><code>q) neg[h](`.gw.asyncexec;&quot;`$last .z.x&quot;;`hdb);h[]
+</code></pre>
+
+<h4 id="calls-to-the-hdb-and-rdb">Calls to the HDB and RDB</h4>
+<p>For synchronous calls</p>
+<pre><code>q) h(`.gw.syncexec;&quot;$[.proc.proctype=`hdb; select from trade where date within (.z.d-2;.z.d-1); select from trade]&quot;;`rdb`hdb)
+</code></pre>
+
+<p>For asynchronous calls</p>
+<pre><code>q) neg[h](`.gw.asyncexec;&quot;$[.proc.proctype=`hdb; select from trade where date within (.z.d-2;.z.d-1); select from trade]&quot;;`rdb`hdb);h[]
+</code></pre>
+
+<h4 id="demonstrating-aggregation-of-data">Demonstrating Aggregation of data</h4>
+<p>For the purposes of demonstration, assume that the following queries must be run
+across a single RDB and a single HDB process, and the gateway has one RDB and two HDB
 processes available to it.</p>
 <pre><code>q).gw.servers                                                                                                                                                                                                                                                                 
 handle| servertype inuse active querycount lastquery                     usage                attributes                   
@@ -1057,8 +1331,9 @@ handle| servertype inuse active querycount lastquery                     usage  
 <p>Both the RDB and HDB processes have a function f and table t defined. f
 will run for 2 seconds longer on the HDB processes then it will the RDB.</p>
 <pre><code>q)f                                                                                                                                                                                                                                                                           
-{system"sleep ",string x+$[`hdb=.proc.proctype;2;0]; t}
-q)t                                                                                                                                                                                                                                                                           
+{system"sleep ",string x+$[`hdb=.proc.proctype;2;0]; t}  //if process type is HDB, sleep for x+2 seconds and then return table t. If not, sleep for x seconds and return table t
+q)t:([]a:(5013;5014;5015;5016;5017))                                                                                            
+q)t                                                                                                                                                                 
 a   
 ----
 5013
@@ -1070,7 +1345,7 @@ a
 <p>Run the gateway. The main parameter which should be set is the
 .servers.CONNECTIONS parameter, which dictates the process types the
 gateway queries across. Also, we need to explicitly allow sync calls. We
-can do this from the config or from the command line.</p>
+can do this from the config or from the command line using the following line:</p>
 <pre><code>q torq.q -load code/processes/gateway.q -p 8000 -.gw.synccallsallowed 1 -.servers.CONNECTIONS hdb rdb -proctype gateway -procname gateway1
 </code></pre>
 <p>Start a client and connect to the gateway. Start with a sync query. The
@@ -1100,7 +1375,7 @@ is returned:</p>
 `not all of the requested server types are available; missing other
 </code></pre>
 <p>Custom join functions can be specified:</p>
-<pre><code>q)h(`.gw.syncexecj;(`f;2);`hdb`rdb;{sum{select count i by a from x} each x})                                                                                                                                                                                                  
+<pre><code>q)h(`.gw.syncexecj;(`f;2);`hdb`rdb;{sum{select count i by a from x} each x})        //[query;servertype;joinfunction(lambda)]                                                                                                                                                                                          
 a   | x
 ----| -
 5014| 2
@@ -1151,10 +1426,10 @@ q)r
 not have to block and wait for the result. The postback function must
 take two parameters- the first is the function that was sent up, the
 second is the results. The postback can either be a lambda, or the name
-of a function.</p>
+of a function eg. handleresults.</p>
 <pre><code>q)h:hopen 8000                                                                                                                                                                                                                                                                
-q)handleresults:{-1(string .z.z)," got results"; -3!x; show y}                                                                                                                                                                                                                
-q)(neg h)(`.gw.asyncexecjpt;(`f;2);`hdb`rdb;raze;handleresults;0Wn)                                                                                                                                                                                                           
+q)handleresults:{-1(string .z.z)," got results"; -3!x; show y}             //postback with timestamp, got results and an output of the results                                                                                                                                                                                                   
+q)(neg h)(`.gw.asyncexecjpt;(`f;2);`hdb`rdb;raze;{-1(string .z.z)," got results"; -3!x; show y};0Wn)     //[.gw.asyncexecjpt[query;servertypes(list of symbols);joinfunction(lambda);postbackfunction(lambda or symbol);timeout(timespan)]                                                                                                                                                                                                      
 q)
 q)  /- These q prompts are from pressing enter
 q)  /- The q client is not blocked, unlike the previous example
@@ -1289,7 +1564,7 @@ The modifications from the standard tick.q include:</p>
 </li>
 <li>
 <p>Allows configuration of timezones for timestamping data and performing
-    end of day rollover (see <a href="../utilities/#eodtimeq">eodtime.q</a>);</p>
+    end of day rollover (see <a href="utilities/#eodtimeq">eodtime.q</a>);</p>
 </li>
 </ul>
 <p>The tickerplant log file will be written to hdb/database.</p>
@@ -1354,7 +1629,7 @@ number of modifications and enhancements over w.q:</p>
 <p>More log information supplied;</p>
 </li>
 <li>
-<p>End of day timezone can be configured (see <a href="../utilities/#eodtimeq">eodtime.q</a>).</p>
+<p>End of day timezone can be configured (see <a href="utilities/#eodtimeq">eodtime.q</a>).</p>
 </li>
 </ol>
 <p>The WDB process can broken down into two main functions:</p>
@@ -2321,6 +2596,259 @@ and are under the <code>.ctp</code> namespace.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="torq-data-quality-system-architecture">TorQ Data Quality System Architecture</h2>
+<p>Whilst the Monitor process checks the health of other processes in the 
+system, it does not check the quality of the data captured. An RDB process 
+could be running, but capturing and populating its tables with null values, 
+or not running at all. These errors would not be caught by the Monitor process, 
+so the Data Quality System has been developed with the purpose of capturing such errors.
+The system periodically runs a set of user-specified checks on selected processes
+to ensure data quality.</p>
+<p>For example, you can place checks on a table to periodically check that the
+percentage of nulls it contains in a certain column is below a given threshold,
+or check that the values of a column stay within a specified range that changes
+throughout the day.</p>
+<p>The system behaves based on Data Quality Config files. The metrics from the
+config files and the results of the checks performed on databases in the data
+capturing system are saved to Data Quality Databases. The results can then be
+used for monitoring tools to alert users.</p>
+<p>The Data Quality System consists of four processes: the Data Quality Checker(DQC)
+and the Data Quality Engine(DQE), as well as a Database process for each (DQCDB and DQEDB). 
+These processes are explained in detail below.</p>
+<h2 id="data-quality-checker-dqc">Data Quality Checker (DQC)</h2>
+<p>The Data Quality Checker process runs checks on other TorQ
+processes to check the quality of data in the system. The specific parameters of 
+the checks that are being run can be configured in <code>config/dqcconfig.csv</code>.
+Configuration from <code>dqcconfig.csv</code> is then  loaded to <code>configtable</code> in the <code>dqe</code>
+namespace, and the checks are then run based on the parameters. The results
+of the checks are saved to the results table in the <code>dqe</code> namespace. The 
+results table that contains all check results will periodically be saved to
+the DQCDB intraday. The configuration of the
+checks will also be periodically saved to the DQCDB throughout the day.</p>
+<p>Example of <code>configtable</code> is shown below:</p>
+<pre><code>    action         params                                                                                                   proc           mode   starttime                     endtime                       period               checkid
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    tableticking   &quot;`comp`vars!(0b;(`quote;5;`minute))&quot;                                                                     &quot;`rdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:05:00.000000000 0
+    chkslowsub     &quot;`comp`vars!(0b;1000000)&quot;                                                                                &quot;`tickerplant&quot; repeat 2020.03.20D09:00:00.000000000 2020.03.20D19:00:00.000000000 0D00:10:00.000000000 1
+    tableticking   &quot;`comp`vars!(0b;(`quote;5;`minute))&quot;                                                                     &quot;`rdb1&quot;        single 2020.03.20D12:00:00.000000000                                                    2
+    constructcheck &quot;`comp`vars!(0b;(`quote;`table))&quot;                                                                        &quot;`rdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:02:00.000000000 3
+    constructcheck &quot;`comp`compallow`compproc`vars!(1b;0;`hdb1;(`date;`variable))&quot;                                           &quot;`hdb2&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:02:00.000000000 4
+    attrcheck      &quot;`comp`vars!(0b;(`quote;`s`g;`time`sym))&quot;                                                                &quot;`rdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:02:00.000000000 5
+    schemacheck    &quot;`comp`vars!(0b;(`quote;`time`sym`bid`ask`bsize`asize`mode`ex`src;\&quot;psffjjccs\&quot;;`````````;`s`g```````))&quot; &quot;`rdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:15:00.000000000 6
+    freeform       &quot;`comp`vars!(0b;\&quot;select from trade where date=2020.01.02\&quot;)&quot;                                            &quot;`hdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:03:00.000000000 7
+    symfilecheck   &quot;(`comp`vars!(0b;(.dqe.hdbdir;`sym)))&quot;                                                                   &quot;`hdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:10:00.000000000 8
+    xmarketalert   &quot;`comp`vars!(0b;(`quote))&quot;                                                                               &quot;`rdb1&quot;        repeat 2020.03.20D09:00:00.000000000                               0D00:05:00.000000000 9
+</code></pre>
+
+<p><strong>action</strong> - The check function that you would like to perform. Specific
+checks and usages can be found in the directory <code>code/dqc</code>.</p>
+<p><strong>params</strong> - The parameters that are used by the function. The Checker
+accepts <strong>params</strong> as a dictionary, with <code>comp</code> and <code>vars</code> being the two
+keys. <code>comp</code> should be assigned a boolean value - when it is <code>1b</code>,comparison
+is ON and the function is then used to compare two processes. When it is
+<code>0b</code>, comparison is OFF and the function is only used in one process. The
+<code>var</code> key should have a value of all the variables that are used by the
+function. Details of the variables used by checker functions can be found
+in <code>config/dqedetail.csv</code>.</p>
+<p><strong>proc</strong> - The process(es) that you would want the check function to be used
+for - in symbol datatype.</p>
+<p><strong>mode</strong> - Mode could be set to either <code>repeat</code> or <code>single</code>. When it is set
+to <code>repeat</code> the check will be periodically run based on the <strong>period</strong>
+parameter, which sets the time it will take before running the same check
+again. When it is set to <code>single</code>, the check will only be ran once.</p>
+<p><strong>starttime</strong> - The start time of the check function - in timespan datatype.</p>
+<p><strong>endtime</strong> - When mode is <code>repeat</code>, end time specifies when the check will
+run for the last time for the day. When mode is <code>single</code>, endtime should be
+set to <code>0N</code>. Should be in timespan datatype.</p>
+<p><strong>period</strong> - When mode is <code>repeat</code>, period represents the time it takes for
+the next run to start. When mode is <code>single</code>, period should be set to <code>0N</code>.
+Should be in timespan datatype.</p>
+<p>An example of <code>.dqe.results</code> is shown below:</p>
+<pre><code>    id funct               params                                   procs       procschk     starttime                     endtime                       result descp                                            chkstatus chkruntype
+    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    2  .dqc.tableticking   quote,5,minute                           rdb         rdb1         2020.03.19D20:04:59.777402000 2020.03.19D20:04:59.784107000 1      &quot;there are 44 records&quot;                           complete  scheduled
+    0  .dqc.tableticking   quote,5,minute                           rdb         rdb1         2020.03.19D20:05:00.178288000 2020.03.19D20:05:00.186770000 1      &quot;there are 82 records&quot;                           complete  scheduled
+    9  .dqc.xmarketalert   quote                                    rdb         rdb1         2020.03.19D20:05:00.179664000 2020.03.19D20:05:00.193734000 1      &quot;bid has not exceeded the ask in market data&quot;    complete  scheduled
+    3  .dqc.constructcheck quote,table                              rdb         rdb1         2020.03.19D20:06:00.178885000 2020.03.19D20:06:00.196380000 1      &quot;quote table exists&quot;                             complete  scheduled
+    4  .dqc.constructcheck date,variable,comp(hdb1,0)               hdb         hdb2         2020.03.19D20:06:00.180247000 2020.03.19D20:06:00.203920000 1      &quot;hdb1  | match hdb2&quot;                             complete  scheduled
+    5  .dqc.attrcheck      quote,s,g,time,sym                       rdb         rdb1         2020.03.19D20:06:00.182379000 2020.03.19D20:06:00.201300000 1      &quot;attribute of time,sym matched expectation&quot;      complete  scheduled
+    7  .dqc.freeform       select from trade where date=2020.01.02  hdb         hdb1         2020.03.19D20:06:00.184577000 2020.03.19D20:06:00.205209000 1      &quot;select from trade where date=2020.01.02 passed&quot; complete  scheduled
+    3  .dqc.constructcheck quote,table                              rdb         rdb1         2020.03.19D20:08:00.378141000 2020.03.19D20:08:00.398781000 1      &quot;quote table exists&quot;                             complete  scheduled
+    4  .dqc.constructcheck date,variable,comp(hdb1,0)               hdb         hdb2         2020.03.19D20:08:00.379574000 2020.03.19D20:08:00.404501000 1      &quot;hdb1  | match hdb2&quot;                             complete  scheduled
+</code></pre>
+
+<p>The columns of results table provide information about the checks performed:</p>
+<p><strong>id</strong> - The id of the check after being loaded into the process. In the
+sample table above, <code>.dqc.construckcheck</code> with the id 3 that checks whether
+quote table exists and <code>.dqc.construckcheck</code> with the id 4 that checks
+whether data in hdb1 matches hdb2 had two results showing as they have been
+ran twice within that time period, but the parameters of the checks have not
+been changed. The id column is also useful for manually running checks.</p>
+<p><strong>funct</strong> - The check function that was performed.</p>
+<p><strong>params</strong> - The variables that were input while the check function was 
+performed.</p>
+<p><strong>procs</strong> - The process(es) type that the function was performed on.</p>
+<p><strong>procschk</strong> - The specific process(es) that the function was performed on.</p>
+<p><strong>starttime</strong> - When the function was started.</p>
+<p><strong>endtime</strong> - When the function stopped running.</p>
+<p><strong>result</strong> - Returns a boolean value. If the <strong>result</strong> is <code>1</code>, then the
+function was ran successfully, and no data anomaly was found. If the
+<strong>result</strong> is <code>0</code>, then the function may not have been run successfully,
+or the data quality may be corrupted.</p>
+<p><strong>descp</strong> - A string description describing the result of the check 
+function.</p>
+<p><strong>chkstatus</strong> - Could display either <code>complete</code> or <code>failed</code>. When the
+check function runs successfully, whether the <strong>result</strong> column is 0 or 1,
+<strong>chkstatus</strong> would be <code>complete</code>. However, if there was an error that caused
+the check to not run successfully(Ex: variables being a wrong type), <code>failed</code> 
+would be displayed instead.</p>
+<p><strong>chkruntype</strong> - Could display either <code>scheduled</code> or <code>manual</code>, meaning
+either the check was ran as scheduled from the configtable, or it was forced
+to run manually from the console.</p>
+<p>Below, we list all the built-in checks that we offer as part of the Data Quality Checker.</p>
+<ul>
+<li><code>.dqc.constructchkeck</code> - Checks if a construct exists.</li>
+<li><code>.dqc.tableticking</code> - Checks if a table has obtained records within a specified time period.</li>
+<li><code>.dqc.chkslowsub</code> - Checks queues on handles to make sure there are no slow subscribers.</li>
+<li><code>.dqc.tablecount</code> - Checks a table count against a number. This can be a <code>&gt;</code>, <code>&lt;</code> or <code>=</code> relationship.</li>
+<li><code>.dqc.tablehasrecords</code> - A projection of <code>.dqc.tablecount</code> that is used to check if a table is non-empty.</li>
+<li><code>.dqc.attrcheck</code> - Checks that a tables actual schema matches the expectation.</li>
+<li><code>.dqc.infinitychk</code> - Checks the percentage of infinities in certain columns of a table are below a given threshold.</li>
+<li><code>.dqc.freeform</code> - Checks if a query has passed correctly.</li>
+<li><code>.dqc.schemacheck</code> - Checks if the meta of a table matches expectation.</li>
+<li><code>.dqc.datechk</code> - Checks the date vector contains the latest date in a HDB.</li>
+<li><code>.dqc.nullchk</code> - Checks percentages of nulls in columns of a table are below a given threshold.</li>
+<li><code>.dqc.symfilecheck</code> - Checks that the sym file exists.</li>
+<li><code>.dqc.xmarketalert</code> - Tests whether the bid price has exceeded in the ask price in market data.</li>
+<li><code>.dqc.dfilechk</code> - Checks the <code>.d</code> file in the latest date partition matches the previous date values.</li>
+<li><code>.dqc.rangechk</code> - Checks whether the values of columns of a table are within a given range.</li>
+<li><code>.dqc.tablecountcomp</code> - Counts the number of rows in a table.</li>
+<li><code>.dqc.pctAvgDailyChange</code> - Checks if a function applied to a table is within the threshold limits of an n-day average.</li>
+</ul>
+<p><strong>New Custom Check</strong>
+To add custom checks, create a new q file in /code/dqc. The new q script
+should be under the namespace dqc, and should contain the function. The function
+should return a mixed list with two atoms: first atom being boolean, and second
+being string. The first atom would contain whether the check was successful (1b)
+or was there an error/failed check(0b). This will be shown in the <strong>result</strong>
+column of the results table. The second atom would contain the description of
+the result of the check.</p>
+<p>Below is a sample of a qscript named customcheck.q, with the function customcheck,
+written in pseudo-code for reference:</p>
+<pre><code>\d .dqc
+
+customcheck:{[variable1;variable2]
+  $[variable1~variable2;
+    (1b;&quot;Description if the function ran successfully&quot;);
+    (0b;&quot;Description if the function failed to run&quot;)]
+  }
+</code></pre>
+
+<p>To use the function to run check, proceed to /appconfig/dqcconfig.csv, and modify
+how you would want the check to be ran.
+As an example, to run the customcheck above with the following settings - </p>
+<p><strong>params</strong> - Not comparing two processes, and running with the two variables being
+<code>abc</code> and <code>def</code>.
+<strong>proc</strong> - running on the process <code>rdb1</code>.
+<strong>mode</strong> - the function being run repeatedly.
+<strong>starttime</strong> - 9AM.
+<strong>endtime</strong> - not specified.
+<strong>period</strong> - the check to be run every 10 minutes.</p>
+<p>The line in dqcconfig.csv should be:</p>
+<pre><code>action,params,proc,mode,starttime,endtime,period
+customcheck,`comp`vars!(0b;(`abc;`def)),`rdb1,repeat,09:00:00.000000000,0Wn,0D00:10:00
+</code></pre>
+
+<p>To add a check that compares two processes, the check function would have to return
+a mixed listed with three atoms. The first two being the same as above, and the third being
+a numeric value. The numeric value would be what is compared between the two processes.
+Secondly, the line in dqcconfig.csv should be modified. As mentioned above, the <code>params</code>
+parameter would now have to be changed, and two additional dictionary keys would have to be
+added. As an example, if we were to run the function constructcheck comparing <code>hdb1</code> and <code>hdb2</code>,
+the line would be the following:</p>
+<pre><code>action,params,proc,mode,starttime,endtime,period
+constructcheck,`comp`compallow`compproc`vars!(1b;0;`hdb1;(`date;`variable)),`hdb2,repeat,09:00:00.000000000,0Wn,0D00:02:00
+</code></pre>
+
+<h2 id="data-quality-engine-dqe">Data Quality Engine (DQE)</h2>
+<p>The DQE process stores daily statistics
+of other TorQ processes. It is a separate process from the DQC 
+because the DQE does not run checks. The DQE and the DQC
+could be used to track the percentage change of records in a table from day
+to day. The Checker can then use the data saved the DQEDB to perform
+advanced checks.The behaviour of the Engine is based on the config file stored
+in <code>config/dqengineconfig.csv</code>.</p>
+<p>The config csv file is shown below:</p>
+<pre><code>    query,params,proc,querytype,starttime
+    -------------------------------------
+    tablecount,.z.d-1,`hdb1,table,09:00:00.000000000
+    symfilecheck,`sym,`hdb1,other,09:00:00.000000000
+    symcount,(`quote;`sym),`hdb1,table,09:00:00.000000000
+</code></pre>
+
+<p><strong>query</strong> - The query function that is used to provide daily statistics
+of a process.</p>
+<p><strong>params</strong> - the variables that is used for the query function.</p>
+<p><strong>proc</strong> - The process that the query function is running on.</p>
+<p><strong>querytype</strong> - Whether the query is ran for a <code>table</code> or <code>other</code>.</p>
+<p><strong>starttime</strong> - What time should the query start.</p>
+<p>The daily statistics of other TorQ processes are saved to the <code>resultstab</code>
+table in <code>dqe</code> namespace, which would be saved to Data Quality Engine
+Database (DQEDB).</p>
+<p>Example of <code>resultstab</code> is shown below:</p>
+<pre><code>    date       procs funct        table     column resvalue
+    -------------------------------------------------------
+    2020.03.16 hdb1  tablecount   quote            0
+    2020.03.16 hdb1  tablecount   quote_iex        0
+    2020.03.16 hdb1  tablecount   trade            0
+    2020.03.16 hdb1  tablecount   trade_iex        0
+    2020.03.16 hdb1  symfilecheck                  10
+    2020.03.16 hdb1  symcount     quote     sym    10
+</code></pre>
+
+<p><strong>date</strong> - Date that the data was saved.</p>
+<p><strong>procs</strong> - The process that the query function was running on.</p>
+<p><strong>funct</strong> - The query function that was used.</p>
+<p><strong>table</strong> - Table that the function ran on. If the query was
+not performed on a table, the section is left blank.</p>
+<p><strong>column</strong> - Column of the table that the function ran on. If 
+the query did not specify the column, the section is left blank.</p>
+<p><strong>resvalue</strong> - The value returned from the function that was ran.</p>
+<p><strong>New Custom Queries</strong>
+To add custom queries, create a new q file in /code/dqe. The new q script
+should be under the namespace dqe, and should contain the function. The function
+should return a dictionary, With the key being the function name, and the value
+being the statistic that the query should return. The value from the dictionary will
+be shown as the <strong>resvalue</strong> in the <code>resultstab</code> table. </p>
+<p>Below is a sample of a qscript named customquery.q, with the function customquery,
+written in pseudo-code for reference:</p>
+<pre><code>\d .dqe
+
+customquery:{[variable1;variable2]
+  (enlist variable1)!enlist count variable2
+  }
+</code></pre>
+
+<p>To use the function to run check, proceed to /appconfig/dqengineconfig.csv, and modify
+how you would want the check to be ran.
+As an example, to run the customquery above with the following settings -</p>
+<p><strong>params</strong> - Variable being <code>abc</code>.
+<strong>proc</strong> - running on the process <code>hdb1</code>.
+<strong>querytype</strong> - other as it is not a table
+<strong>starttime</strong> - 9AM</p>
+<p>The line in the config csv should be:</p>
+<pre><code>query,params,proc,querytype,starttime
+customquery,`table`quote,`hdb1,other,09:00:00.000000000
+</code></pre>
+                
+                  
+                
+                
+              
+              
+                
+
+
               
             </article>
           </div>
@@ -2374,16 +2902,14 @@ and are under the <code>.ctp</code> namespace.</p>
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
-        
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/AquaQAnalytics" class="md-footer-social__link fa fa-github"></a>
     
@@ -2393,20 +2919,15 @@ and are under the <code>.ctp</code> namespace.</p>
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../assets/javascripts/application-16f434a21a.js"></script>
-      <script>var config={url:{base:".."}},app=new Application(config);app.initialize()</script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
-    
-    
-      
-      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-51911331-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
   </body>
